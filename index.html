@@ -197,11 +197,18 @@
         }
         .footer-links a i { color: #7abfdd; font-size: 20px; }
 
+        /* 版权行（含创始人） */
         .copyright {
             text-align: center; margin-top: 28px; font-size: 13px;
             color: rgba(160,190,210,0.5);
             border-top: 1px solid rgba(100,180,220,0.08);
             padding-top: 18px;
+            line-height: 1.8;
+        }
+        .copyright .founder {
+            color: #7abfdd;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* ---------- 模态框 ---------- */
@@ -385,8 +392,11 @@
             <a href="javascript:void(0)" id="howToPlayLink"><i class="fas fa-book"></i> 玩法介绍</a>
         </div>
 
+        <!-- 版权行（含创始人） -->
         <div class="copyright">
-            <i class="fas fa-cube"></i> 方块谷服务器 · 网易租赁服 &nbsp;|&nbsp; 欢迎每一位冒险家
+            <i class="fas fa-cube"></i> 方块谷服务器 · 网易租赁服 &nbsp;|&nbsp; 
+            <span class="founder">创始人：<span id="founderName">或非与门</span></span> &nbsp;|&nbsp; 
+            欢迎每一位冒险家
         </div>
     </div>
 
@@ -451,17 +461,21 @@
 
     <script>
         (function() {
-            // ========== 配置区 ==========
+            // ========== 配置区（改这里！） ==========
             const CONFIG = {
-                serverId: '82512428',      // 服务器号
-                password: '276492',         // 密码
-                qqGroup: '904893199',       // QQ群号
+                serverId: '82512428',          // 服务器号
+                password: '276492',             // 密码
+                qqGroup: '904893199',           // QQ群号
+                founder: '你的名字'              // ← 把这里改成你（创始人）的名字
             };
-            // =============================
+            // ========================================
 
+            // 填充数据
             document.getElementById('serverId').textContent = CONFIG.serverId;
             document.getElementById('serverPassword').textContent = CONFIG.password;
+            document.getElementById('founderName').textContent = CONFIG.founder;
 
+            // QQ群链接
             const qqLink = document.getElementById('qqLink');
             if (qqLink) {
                 qqLink.href = `https://qm.qq.com/q/${CONFIG.qqGroup}`;
