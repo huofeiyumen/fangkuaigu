@@ -125,6 +125,7 @@
             align-items: center;
             gap: 12px;
             padding: 4px 0;
+            flex-wrap: wrap;
         }
         .info-row i {
             width: 24px;
@@ -143,6 +144,7 @@
             color: #e0edf5;
             font-size: 20px;
             letter-spacing: 1px;
+            margin-right: 4px;
         }
         .password-row .value {
             color: #f0c060;
@@ -156,6 +158,48 @@
             margin-left: 8px;
         }
 
+        /* ---- 复制按钮样式 ---- */
+        .copy-btn {
+            background: rgba(100,180,220,0.12);
+            border: 1px solid rgba(100,180,220,0.25);
+            color: #b0d0e0;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            backdrop-filter: blur(2px);
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 0.3px;
+            user-select: none;
+        }
+        .copy-btn:hover {
+            background: rgba(100,180,220,0.25);
+            border-color: rgba(100,200,240,0.4);
+            color: #e0edf5;
+            transform: scale(1.05);
+        }
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+        .copy-btn i {
+            font-size: 14px;
+            color: #7abfdd;
+        }
+        .copy-btn.copied {
+            background: rgba(139,195,74,0.2);
+            border-color: #8bc34a;
+            color: #8bc34a;
+        }
+        .copy-btn.copied i {
+            color: #8bc34a;
+        }
+
+        /* 特色 */
         .features {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 16px; margin: 32px 0 28px;
@@ -180,7 +224,8 @@
             gap: 20px 40px; margin-top: 28px; padding-top: 24px;
             border-top: 1px solid rgba(100,180,220,0.1);
         }
-        .footer-links a {
+        .footer-links a,
+        .footer-links .copy-btn {
             color: #b0d0e0; text-decoration: none; font-size: 17px;
             display: inline-flex; align-items: center; gap: 10px;
             transition: 0.2s;
@@ -195,9 +240,23 @@
             border-color: rgba(100,200,240,0.25);
             transform: translateY(-2px);
         }
-        .footer-links a i { color: #7abfdd; font-size: 20px; }
+        .footer-links .copy-btn {
+            font-size: 15px;
+            padding: 6px 16px;
+            gap: 6px;
+            background: rgba(20,40,60,0.15);
+        }
+        .footer-links .copy-btn:hover {
+            background: rgba(40,80,120,0.3);
+            border-color: rgba(100,200,240,0.3);
+            transform: translateY(-2px);
+        }
+        .footer-links .copy-btn i {
+            color: #7abfdd;
+            font-size: 16px;
+        }
 
-        /* 版权行（含创始人） */
+        /* 版权行 */
         .copyright {
             text-align: center; margin-top: 28px; font-size: 13px;
             color: rgba(160,190,210,0.5);
@@ -210,6 +269,52 @@
             font-weight: 500;
             letter-spacing: 0.5px;
         }
+
+        /* ========== 新增：下载区域美化 ========== */
+        .download-wrapper {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 10px;
+        }
+        .download-wrapper .download-text {
+            color: rgba(200,220,235,0.8);
+            font-size: 16px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .download-wrapper .download-text i {
+            color: #f0c060;
+            margin-right: 6px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #66BB6A;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(76, 175, 80, 0.35);
+            backdrop-filter: blur(2px);
+            letter-spacing: 0.5px;
+        }
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .download-btn:hover {
+            background: #43A047;
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+            color: #fff;
+        }
+        .download-btn:active {
+            transform: scale(0.97);
+        }
+        /* ========== 新增结束 ========== */
 
         /* ---------- 模态框 ---------- */
         .modal-overlay {
@@ -324,7 +429,7 @@
             .server-card { padding: 24px 18px; }
             .header-title h1 { font-size: 22px; }
             .info-row .value { font-size: 17px; }
-            .info-row { flex-wrap: wrap; gap: 4px; }
+            .info-row { flex-wrap: wrap; gap: 8px; }
             .info-row .label { min-width: 80px; }
             .status-bar { flex-direction: column; gap: 10px; border-radius: 28px; }
             .slogan { font-size: 17px; padding: 10px 8px; }
@@ -332,11 +437,17 @@
             .modal-box { padding: 24px 18px; max-width: 100%; }
             .modal-box h2 { font-size: 22px; }
             .modal-box ul li { font-size: 14px; }
+            .copy-btn { font-size: 12px; padding: 2px 10px; }
+            .footer-links { gap: 12px; }
+            .download-btn { padding: 12px 24px; font-size: 16px; }
+            .download-wrapper .download-text { font-size: 14px; }
         }
         @media (max-width: 420px) {
             .header { flex-direction: column; text-align: center; }
             .features { grid-template-columns: 1fr 1fr; }
             .footer-links { flex-direction: column; align-items: center; }
+            .footer-links a, .footer-links .copy-btn { width: 100%; justify-content: center; }
+            .download-btn { width: 100%; box-sizing: border-box; text-align: center; }
         }
     </style>
 </head>
@@ -363,17 +474,19 @@
             原汁原味 · 自由建造 · 你的第二个世界
         </div>
 
-        <!-- 服务器号 + 密码 -->
+        <!-- 服务器号 + 密码（带复制按钮） -->
         <div class="server-info">
             <div class="info-row">
                 <i class="fas fa-hashtag"></i>
                 <span class="label">服务器号</span>
                 <span class="value" id="serverId">82512428</span>
+                <button class="copy-btn" data-copy="82512428"><i class="fas fa-copy"></i> 复制</button>
             </div>
             <div class="info-row password-row">
                 <i class="fas fa-key"></i>
                 <span class="label">服务器密码</span>
                 <span class="value" id="serverPassword">276492</span>
+                <button class="copy-btn" data-copy="276492"><i class="fas fa-copy"></i> 复制</button>
                 <span class="password-hint">（进入游戏时需输入）</span>
             </div>
         </div>
@@ -386,18 +499,30 @@
             <div class="feature-item"><i class="fas fa-shield-alt"></i><span>稳定低延迟</span></div>
         </div>
 
-        <!-- 底部链接 -->
+        <!-- 底部链接：QQ群链接 + 复制按钮 -->
         <div class="footer-links">
-            <a href="#" id="qqLink"><i class="fab fa-qq"></i> QQ群：904893199</a>
+            <a href="https://qm.qq.com/q/904893199" target="_blank"><i class="fab fa-qq"></i> QQ群：904893199</a>
+            <button class="copy-btn" id="copyQQBtn" data-copy="904893199"><i class="fas fa-copy"></i> 复制群号</button>
             <a href="javascript:void(0)" id="howToPlayLink"><i class="fas fa-book"></i> 玩法介绍</a>
         </div>
 
         <!-- 版权行（含创始人） -->
         <div class="copyright">
             <i class="fas fa-cube"></i> 方块谷服务器 · 网易租赁服 &nbsp;|&nbsp; 
-            <span class="founder">创始人：<span id="founderName">你的名字</span></span> &nbsp;|&nbsp; 
+            <span class="founder">创始人：<span id="founderName">或非与门</span></span> &nbsp;|&nbsp; 
             欢迎每一位冒险家
         </div>
+
+        <!-- ========== 新增：下载区域（含引导文本） ========== -->
+        <div class="download-wrapper">
+            <div class="download-text">
+                <i class="fas fa-gamepad"></i> 还没有安装网易我的世界？下载官方客户端，加入方块谷！
+            </div>
+            <a href="https://mc.163.com" target="_blank" class="download-btn">
+                <i class="fas fa-download"></i> 下载官方正版 · 网易我的世界
+            </a>
+        </div>
+        <!-- ========== 新增结束 ========== -->
     </div>
 
     <!-- ========== 玩法介绍模态框 ========== -->
@@ -406,7 +531,6 @@
             <button class="modal-close" id="modalCloseBtn">&times;</button>
             <h2><i class="fas fa-pickaxe"></i> 方块谷 · 玩法大全</h2>
             <ul>
-                <!-- 1. 建筑与红石 -->
                 <li>
                     <i class="fas fa-cubes"></i>
                     <div>
@@ -415,16 +539,14 @@
                         全区域自由建造，红石机制无任何限制，发挥你的创造力。
                     </div>
                 </li>
-                <!-- 2. 雪球菜单 -->
                 <li>
                     <i class="fas fa-snowball"></i>
                     <div>
                         <span class="section-tag">核心</span>
-                        <strong>雪球菜单</strong><br>
+                        <strong> 雪球菜单</strong><br>
                         支持 <strong>原地去世</strong>、<strong>传送主城</strong>、<strong>设置重生点</strong>、<strong>查看个人信息</strong>，以及 <strong>玩家间相互传送</strong>。
                     </div>
                 </li>
-                <!-- 3. 经济系统 -->
                 <li>
                     <i class="fas fa-coins"></i>
                     <div>
@@ -434,7 +556,6 @@
                         <span style="color: #b0d0e0; font-size: 14px;">✦ 新手初始背包需用货币解锁 · 货币还可升级装备</span>
                     </div>
                 </li>
-                <!-- 4. 副本挑战 -->
                 <li>
                     <i class="fas fa-dragon"></i>
                     <div>
@@ -443,7 +564,6 @@
                         挑战成功后可获得丰厚奖励，考验你的战斗技巧。
                     </div>
                 </li>
-                <!-- 5. 未来计划 -->
                 <li>
                     <i class="fas fa-rocket"></i>
                     <div>
@@ -463,10 +583,10 @@
         (function() {
             // ========== 配置区（改这里！） ==========
             const CONFIG = {
-                serverId: '82512428',          // 服务器号
-                password: '276492',             // 密码
-                qqGroup: '904893199',           // QQ群号
-                founder: '或非与门'              // ← 把这里改成你（创始人）的名字
+                serverId: '82512428',
+                password: '276492',
+                qqGroup: '904893199',
+                founder: '或非与门'
             };
             // ========================================
 
@@ -475,12 +595,59 @@
             document.getElementById('serverPassword').textContent = CONFIG.password;
             document.getElementById('founderName').textContent = CONFIG.founder;
 
-            // QQ群链接
-            const qqLink = document.getElementById('qqLink');
-            if (qqLink) {
-                qqLink.href = `https://qm.qq.com/q/${CONFIG.qqGroup}`;
-                qqLink.innerHTML = `<i class="fab fa-qq"></i> QQ群：${CONFIG.qqGroup}`;
+            // ---------- 超级复制函数（双重保险） ----------
+            function copyText(text, btn) {
+                if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text)
+                        .then(() => setCopied(btn))
+                        .catch(() => fallbackCopy(text, btn));
+                } else {
+                    fallbackCopy(text, btn);
+                }
             }
+
+            function fallbackCopy(text, btn) {
+                const input = document.createElement('input');
+                input.value = text;
+                input.style.position = 'fixed';
+                input.style.opacity = '0';
+                input.style.left = '-9999px';
+                input.style.top = '-9999px';
+                input.setAttribute('readonly', 'readonly');
+                document.body.appendChild(input);
+                input.select();
+                try {
+                    const success = document.execCommand('copy');
+                    if (success) {
+                        setCopied(btn);
+                    } else {
+                        throw new Error('execCommand 返回 false');
+                    }
+                } catch (e) {
+                    alert('自动复制失败，请手动复制：' + text);
+                }
+                document.body.removeChild(input);
+            }
+
+            function setCopied(btn) {
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> 已复制';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }
+
+            document.querySelectorAll('.copy-btn[data-copy]').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const text = this.getAttribute('data-copy');
+                    if (text) {
+                        copyText(text, this);
+                    }
+                });
+            });
 
             // ---------- 玩法介绍弹窗 ----------
             const modal = document.getElementById('howToPlayModal');
