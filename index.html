@@ -270,7 +270,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ========== 新增：下载区域美化 ========== */
+        /* 下载区域 */
         .download-wrapper {
             text-align: center;
             margin-top: 25px;
@@ -314,7 +314,6 @@
         .download-btn:active {
             transform: scale(0.97);
         }
-        /* ========== 新增结束 ========== */
 
         /* ---------- 模态框 ---------- */
         .modal-overlay {
@@ -466,6 +465,8 @@
         <!-- 状态栏 -->
         <div class="status-bar">
             <div class="status-item"><i class="fas fa-clock"></i><span>永不换档 · 长期稳定</span></div>
+            <!-- 修改：运行计时器，显示 HH:MM:SS -->
+            <div class="status-item"><i class="fas fa-hourglass-half"></i><span>已运行 <span id="uptimeDisplay">00:00:00</span></span></div>
             <div class="status-item version-tag"><i class="fas fa-code-branch"></i> 1.20.4</div>
         </div>
 
@@ -499,21 +500,21 @@
             <div class="feature-item"><i class="fas fa-shield-alt"></i><span>稳定低延迟</span></div>
         </div>
 
-        <!-- 底部链接：QQ群链接 + 复制按钮 -->
+        <!-- 底部链接 -->
         <div class="footer-links">
             <a href="https://qm.qq.com/q/904893199" target="_blank"><i class="fab fa-qq"></i> QQ群：904893199</a>
             <button class="copy-btn" id="copyQQBtn" data-copy="904893199"><i class="fas fa-copy"></i> 复制群号</button>
             <a href="javascript:void(0)" id="howToPlayLink"><i class="fas fa-book"></i> 玩法介绍</a>
         </div>
 
-        <!-- 版权行（含创始人） -->
+        <!-- 版权行 -->
         <div class="copyright">
             <i class="fas fa-cube"></i> 方块谷服务器 · 网易租赁服 &nbsp;|&nbsp; 
             <span class="founder">创始人：<span id="founderName">或非与门</span></span> &nbsp;|&nbsp; 
             欢迎每一位冒险家
         </div>
 
-        <!-- ========== 新增：下载区域（含引导文本） ========== -->
+        <!-- 下载区域 -->
         <div class="download-wrapper">
             <div class="download-text">
                 <i class="fas fa-gamepad"></i> 还没有安装网易我的世界？下载官方客户端，加入方块谷！
@@ -522,7 +523,6 @@
                 <i class="fas fa-download"></i> 下载官方正版 · 网易我的世界
             </a>
         </div>
-        <!-- ========== 新增结束 ========== -->
     </div>
 
     <!-- ========== 玩法介绍模态框 ========== -->
@@ -581,21 +581,43 @@
 
     <script>
         (function() {
-            // ========== 配置区（改这里！） ==========
+            // ========== 配置区 ==========
             const CONFIG = {
                 serverId: '82512428',
                 password: '276492',
                 qqGroup: '904893199',
-                founder: '或非与门'
+                founder: '或非与门',
+                launchDate: '2026-01-01'   // ← 改成你真实的开服日期，格式 YYYY-MM-DD
             };
-            // ========================================
+            // ==================================
 
             // 填充数据
             document.getElementById('serverId').textContent = CONFIG.serverId;
             document.getElementById('serverPassword').textContent = CONFIG.password;
             document.getElementById('founderName').textContent = CONFIG.founder;
 
-            // ---------- 超级复制函数（双重保险） ----------
+            // ---------- 计时器：显示 HH:MM:SS ----------
+            function updateUptime() {
+                const launch = new Date(CONFIG.launchDate);
+                const now = new Date();
+                const diffSeconds = Math.floor((now.getTime() - launch.getTime()) / 1000);
+                if (diffSeconds < 0) {
+                    document.getElementById('uptimeDisplay').textContent = '00:00:00';
+                    return;
+                }
+                const hours = Math.floor(diffSeconds / 3600);
+                const minutes = Math.floor((diffSeconds % 3600) / 60);
+                const seconds = diffSeconds % 60;
+                const pad = (n) => String(n).padStart(2, '0');
+                document.getElementById('uptimeDisplay').textContent = `${hours}:${pad(minutes)}:${pad(seconds)}`;
+            }
+
+            // 初始更新
+            updateUptime();
+            // 每秒刷新
+            setInterval(updateUptime, 1000);
+
+            // ---------- 复制函数（双重保险） ----------
             function copyText(text, btn) {
                 if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(text)
