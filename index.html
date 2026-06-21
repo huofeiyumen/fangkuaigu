@@ -13,7 +13,6 @@
         }
 
         :root {
-            /* 主题配色配置 改颜色直接改这里 */
             --main: #165DFF;
             --light-main: #4080FF;
             --gradient: linear-gradient(135deg, #4080FF 0%, #165DFF 100%);
@@ -23,7 +22,6 @@
             --border: rgba(22, 93, 255, 0.15);
             --text: #1d2129;
             --text-soft: #4e5969;
-            /* 玩法标签配色 */
             --tag-free: #e6f4ff;
             --tag-free-text: #165DFF;
             --tag-core: #eef0ff;
@@ -34,7 +32,6 @@
             --tag-challenge-text: #f59e0b;
             --tag-coming: #f3e8ff;
             --tag-coming-text: #8b5cf6;
-            /* 团队身份标签 */
             --tag-owner: #e6f4ff;
             --tag-owner-text: #165DFF;
             --tag-admin: #eef0ff;
@@ -53,7 +50,6 @@
             overflow-x: hidden;
         }
 
-        /* 顶部导航 精简后 */
         .navbar {
             position: fixed;
             top: 0;
@@ -110,7 +106,6 @@
             box-shadow: 0 6px 20px rgba(22, 93, 255, 0.4);
         }
 
-        /* 首屏 */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -156,7 +151,6 @@
             box-shadow: 0 2px 10px rgba(22, 93, 255, 0.05);
         }
 
-        /* 首屏信息面板 整合运行时长+服务器号 */
         .hero-info-panel {
             display: flex;
             flex-direction: column;
@@ -189,7 +183,6 @@
             letter-spacing: 1px;
         }
 
-        /* 服务器号极简展示 */
         .server-info-line {
             display: flex;
             gap: 24px;
@@ -240,7 +233,6 @@
             border-color: transparent;
         }
 
-        /* 通用区块 */
         .section {
             padding: 100px 5%;
         }
@@ -263,7 +255,6 @@
             font-size: 16px;
         }
 
-        /* 数据统计 */
         .stats {
             background: var(--white);
         }
@@ -300,7 +291,6 @@
             color: var(--text-soft);
         }
 
-        /* 玩法介绍 */
         .gameplay {
             background: var(--white);
         }
@@ -354,7 +344,6 @@
             font-size: 15px;
         }
 
-        /* 新手入服指引 */
         .guide {
             background: var(--light-bg);
         }
@@ -453,7 +442,6 @@
             font-weight: 600;
         }
 
-        /* 核心特色 */
         .features {
             background: var(--white);
         }
@@ -493,7 +481,106 @@
             line-height: 1.7;
         }
 
-        /* 服务器团队 & 贡献者 */
+        /* ========== 玩家社区 ========== */
+        .community-section {
+            background: var(--light-bg);
+        }
+
+        .community-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .community-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px 44px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(22, 93, 255, 0.06);
+            transition: 0.3s;
+        }
+
+        .community-card:hover {
+            box-shadow: 0 12px 40px rgba(22, 93, 255, 0.1);
+        }
+
+        .community-card .big-icon {
+            font-size: 72px;
+            margin-bottom: 16px;
+        }
+
+        .community-card h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .community-card .group-number {
+            color: var(--text-soft);
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        .community-card .group-number strong {
+            color: var(--main);
+            font-size: 22px;
+        }
+
+        .community-card .sub-text {
+            color: var(--text-soft);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .community-card .btn-join {
+            display: inline-block;
+            padding: 14px 48px;
+            background: var(--gradient);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(22, 93, 255, 0.3);
+            text-decoration: none;
+        }
+
+        .community-card .btn-join:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(22, 93, 255, 0.4);
+        }
+
+        .community-card .copy-row {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        .community-card .copy-row .mini-copy-btn {
+            padding: 4px 14px;
+        }
+
+        @media (max-width: 640px) {
+            .community-card {
+                padding: 32px 20px;
+            }
+            .community-card .big-icon {
+                font-size: 52px;
+            }
+            .community-card h3 {
+                font-size: 20px;
+            }
+            .community-card .btn-join {
+                padding: 12px 32px;
+                font-size: 16px;
+                width: 100%;
+            }
+        }
+        /* ========== 玩家社区结束 ========== */
+
         .team {
             background: var(--light-bg);
         }
@@ -567,7 +654,6 @@
             line-height: 1.6;
         }
 
-        /* 玩法大全弹窗 */
         .modal {
             display: none;
             position: fixed;
@@ -672,7 +758,6 @@
             line-height: 1.7;
         }
 
-        /* 玩法弹窗入口按钮 */
         .gameplay-btn {
             display: block;
             margin: 40px auto 0;
@@ -693,7 +778,6 @@
             box-shadow: 0 8px 20px rgba(22, 93, 255, 0.4);
         }
 
-        /* 页脚 */
         footer {
             background: var(--white);
             padding: 40px;
@@ -707,7 +791,6 @@
             margin-top: 8px;
         }
 
-        /* 移动端适配 */
         @media (max-width: 768px) {
             .nav-menu {display: none;}
             .hero h1 {font-size: 42px;}
@@ -730,12 +813,14 @@
                 max-height: 90vh;
                 padding: 30px 20px;
             }
+            .community-card {
+                padding: 32px 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- 导航栏 精简为4个核心入口 -->
 <div class="navbar">
     <div class="logo" id="nav-logo"></div>
     <div class="nav-menu">
@@ -747,13 +832,11 @@
     <button class="btn" onclick="openGameplayModal()">玩法大全</button>
 </div>
 
-<!-- 首屏 -->
 <section class="hero" id="home">
     <h1 id="server-name"></h1>
     <p id="server-slogan"></p>
     <div class="tag-group" id="tag-group"></div>
     
-    <!-- 整合式信息面板 -->
     <div class="hero-info-panel">
         <div class="runtime-line">
             <span class="runtime-label">已稳定运行</span>
@@ -774,14 +857,12 @@
     </div>
 </section>
 
-<!-- 数据统计 -->
 <section class="section stats">
     <h2 class="section-title">服务器数据</h2>
     <p class="section-desc">长期稳定运营，用数据证明品质</p>
     <div class="stats-grid" id="stats-grid"></div>
 </section>
 
-<!-- 玩法介绍 -->
 <section class="section gameplay" id="gameplay">
     <h2 class="section-title">核心玩法介绍</h2>
     <p class="section-desc">原汁原味的原版体验，丰富多元的游玩内容</p>
@@ -789,12 +870,10 @@
     <button class="gameplay-btn" onclick="openGameplayModal()">查看完整玩法大全</button>
 </section>
 
-<!-- 新手入服指引 -->
 <section class="section guide" id="guide">
     <h2 class="section-title">新手入服指引</h2>
     <p class="section-desc">仅支持网易我的世界正版进入，国际版无法加入，无需审核输入密码即可游玩</p>
     <div class="guide-wrap">
-        <!-- 正版下载 -->
         <div class="guide-card">
             <h3><span>📥</span> 官方正版下载</h3>
             <div class="download-btns">
@@ -810,7 +889,6 @@
                 请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑
             </p>
         </div>
-        <!-- 入服步骤 -->
         <div class="guide-card">
             <h3><span>📖</span> 快速入服步骤</h3>
             <ul class="guide-steps">
@@ -824,38 +902,53 @@
     </div>
 </section>
 
-<!-- 核心特色 -->
 <section class="section features" id="feature">
     <h2 class="section-title">为什么选择我们</h2>
     <p class="section-desc">拒绝快餐式关服，坚持长期运营，给你一个安心建造的家</p>
     <div class="feature-grid" id="feature-grid"></div>
 </section>
 
-<!-- 服务器管理团队 & 贡献者 -->
+<!-- ========== 玩家社区 ========== -->
+<section class="section community-section" id="community">
+    <h2 class="section-title">👥 玩家社区</h2>
+    <p class="section-desc">加入QQ群，与所有玩家一起畅聊</p>
+    <div class="community-wrapper">
+        <div class="community-card">
+            <div class="big-icon">💬</div>
+            <h3>方块谷玩家交流群</h3>
+            <div class="group-number">群号：<strong>904893199</strong></div>
+            <div class="sub-text">加群一起玩，随时找队友</div>
+            <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=cg%2B3rwEF3wsw6VjdH6j%2BtasPl7dW1hNHLhZuMnpuR6p8RWGGh%2F2KWe2LDGaRNvP%2B&busi_data=eyJncm91cENvZGUiOiI5MDQ4OTMxOTkiLCJ0b2tlbiI6IkVTVWZvZEo1QkRtTW5pNFdwSzh0Ry8wRmVrRGNZYkZuaEFFMzh6VDZ2WVoyWnI4dUhMUjVvU1dPZmU0ekRJZzkiLCJ1aW4iOiIzODI5MzU0MTYzIn0%3D&data=XtrCEL3dKDrg6WtKPmvcCiyDiCZUtZ7akcMjcYiB01kXSEESP4AHzzmf9hsVZOB6KSwlUMY77GPV6B78LBYy4w&svctype=4&tempid=h5_group_info" target="_blank" class="btn-join">
+                🚀 立即加群
+            </a>
+            <div class="copy-row">
+                <button class="mini-copy-btn" onclick="copyText('904893199')">复制群号</button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== 玩家社区结束 ========== -->
+
 <section class="section team" id="team">
     <h2 class="section-title">管理团队 & 荣誉贡献</h2>
     <p class="section-desc">感谢每一位为服务器付出的伙伴，方块谷因你们而更好</p>
     
-    <!-- 服主 -->
     <div class="team-section">
         <h3 class="team-subtitle">👑 服务器服主</h3>
         <div class="team-grid" id="owner-list"></div>
     </div>
 
-    <!-- 管理员 -->
     <div class="team-section">
         <h3 class="team-subtitle">🛡️ 服务器管理员</h3>
         <div class="team-grid" id="admin-list"></div>
     </div>
 
-    <!-- 荣誉贡献 -->
     <div class="team-section">
         <h3 class="team-subtitle">⭐ 荣誉贡献者</h3>
         <div class="team-grid" id="contrib-list"></div>
     </div>
 </section>
 
-<!-- 玩法大全弹窗 -->
 <div class="modal" id="gameplay-modal">
     <div class="modal-content">
         <span class="close" onclick="closeGameplayModal()">&times;</span>
@@ -864,25 +957,20 @@
     </div>
 </div>
 
-<!-- 页脚 -->
 <footer id="footer-content"></footer>
 
 <script>
 /* =========================================================
-   🎯 配置区域开始 所有文本都在这里修改 保存后全站生效
+   🎯 配置区域
    ========================================================= */
 const CONFIG = {
-    // 1. 服务器基础信息
     serverName: "方块谷",
     serverVersion: "1.20.4",
     serverSlogan: "网易我的世界高端纯净生存租赁服 | 永不换档 · 长期稳定 · 自由建造 · 你的第二个世界",
     serverId: "82512428",
     serverPassword: "276492",
-
-    // 2. 开服时间（时间戳，毫秒），修改后运行时长会自动重新计算
     serverStartTime: Date.now() - 4085 * 3600 * 1000 - 8 * 60 * 1000 - 31 * 1000,
 
-    // 3. 首屏标签（可自行增减）
     tags: [
         "版本 1.20.4",
         "纯净无魔改",
@@ -890,7 +978,6 @@ const CONFIG = {
         "无需审核"
     ],
 
-    // 4. 数据统计（可自行增减，建议4个最佳）
     stats: [
         { number: "100%", label: "长期稳定" },
         { number: "原版", label: "纯净生存" },
@@ -898,7 +985,6 @@ const CONFIG = {
         { number: "超低", label: "网络延迟" }
     ],
 
-    // 5. 玩法介绍（简要版，展示在页面上）
     gameplay: [
         {
             icon: "⛏️",
@@ -922,7 +1008,6 @@ const CONFIG = {
         }
     ],
 
-    // 6. 完整玩法大全（弹窗版）
     fullGameplay: [
         {
             tagType: "free",
@@ -956,31 +1041,25 @@ const CONFIG = {
         }
     ],
 
-    // 7. 新手指引下载链接
     guide: {
         pcDownloadUrl: "https://mc.163.com/",
         mobileDownloadUrl: "https://mc.163.com/m/",
         officialDomain: "mc.163.com"
     },
 
-    // 8. 管理团队 & 贡献者名单
     team: {
-        // 服主
         owner: [
             { name: "叫我四不像", desc: "服务器创始人，负责整体运营与技术维护" }
         ],
-        // 管理员
         admins: [
             { name: "或非与门", desc: "负责更新维护本网站和处理玩家事务参与过多个主城建筑的建设" },
-            ],
-        // 荣誉贡献者
+        ],
         contributors: [
             { name: "玖濋", desc: "帮忙修建过末地主城" },
             { name: "骑猪勇士ye", desc: "参与过主城建设材料收集" },
         ]
     },
 
-    // 9. 核心特色（可自行增减）
     features: [
         {
             icon: "🌿",
@@ -1004,20 +1083,17 @@ const CONFIG = {
         }
     ],
 
-    // 10. 页脚信息
     footer: [
         "方块谷我的世界网易租赁服 | 长期稳定运营中",
         "本页面为玩家宣传站，游戏服务由网易官方提供 | 网站创始人：或非与门"
     ]
 };
 /* =========================================================
-   🎯 配置区域结束 下面的代码无需修改
+   🎯 配置区域结束
    ========================================================= */
 
 
-// 页面加载完成后渲染所有内容
 window.onload = function() {
-    // 基础信息渲染
     document.getElementById("nav-logo").innerText = CONFIG.serverName;
     document.getElementById("server-name").innerText = CONFIG.serverName;
     document.getElementById("server-slogan").innerText = CONFIG.serverSlogan;
@@ -1025,12 +1101,10 @@ window.onload = function() {
     document.getElementById("spwd-text").innerText = CONFIG.serverPassword;
     document.title = CONFIG.serverName + " - 我的世界网易高端租赁服";
 
-    // 更新复制按钮的data-text
     const copyBtns = document.querySelectorAll('.mini-copy-btn');
     copyBtns[0].dataset.text = CONFIG.serverId;
     copyBtns[1].dataset.text = CONFIG.serverPassword;
 
-    // 标签渲染
     const tagBox = document.getElementById("tag-group");
     CONFIG.tags.forEach(tag => {
         const span = document.createElement("span");
@@ -1039,11 +1113,9 @@ window.onload = function() {
         tagBox.appendChild(span);
     });
 
-    // 启动实时运行时长
     updateRuntime();
     setInterval(updateRuntime, 1000);
 
-    // 数据统计渲染
     const statsBox = document.getElementById("stats-grid");
     CONFIG.stats.forEach(item => {
         const div = document.createElement("div");
@@ -1052,7 +1124,6 @@ window.onload = function() {
         statsBox.appendChild(div);
     });
 
-    // 玩法介绍渲染
     const gameplayBox = document.getElementById("gameplay-grid");
     CONFIG.gameplay.forEach(item => {
         const div = document.createElement("div");
@@ -1067,7 +1138,6 @@ window.onload = function() {
         gameplayBox.appendChild(div);
     });
 
-    // 完整玩法大全渲染
     const fullGameplayBox = document.getElementById("full-gameplay-content");
     CONFIG.fullGameplay.forEach(item => {
         const div = document.createElement("div");
@@ -1083,12 +1153,10 @@ window.onload = function() {
         fullGameplayBox.appendChild(div);
     });
 
-    // 新手指引下载链接渲染
     document.querySelectorAll('.download-btn')[0].href = CONFIG.guide.pcDownloadUrl;
     document.querySelectorAll('.download-btn')[1].href = CONFIG.guide.mobileDownloadUrl;
     document.querySelector('.guide-tip').innerHTML = `官方网址：${CONFIG.guide.officialDomain}<br>请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑`;
 
-    // 核心特色渲染
     const featureBox = document.getElementById("feature-grid");
     CONFIG.features.forEach(item => {
         const div = document.createElement("div");
@@ -1097,12 +1165,10 @@ window.onload = function() {
         featureBox.appendChild(div);
     });
 
-    // 团队名单渲染
     renderTeamList('owner-list', CONFIG.team.owner, 'owner');
     renderTeamList('admin-list', CONFIG.team.admins, 'admin');
     renderTeamList('contrib-list', CONFIG.team.contributors, 'contrib');
 
-    // 页脚渲染
     const footerBox = document.getElementById("footer-content");
     CONFIG.footer.forEach(line => {
         const p = document.createElement("p");
@@ -1110,11 +1176,9 @@ window.onload = function() {
         footerBox.appendChild(p);
     });
 
-    // 绑定复制按钮
     bindCopyButtons();
 };
 
-// 渲染团队成员列表
 function renderTeamList(containerId, list, tagType) {
     const container = document.getElementById(containerId);
     const tagTextMap = {
@@ -1136,7 +1200,6 @@ function renderTeamList(containerId, list, tagType) {
     });
 }
 
-// 通用复制函数 双引擎兼容
 function copyText(text) {
     return new Promise((resolve) => {
         if (navigator.clipboard && window.isSecureContext) {
@@ -1166,7 +1229,6 @@ function fallbackCopy(text) {
     }
 }
 
-// 绑定复制按钮
 function bindCopyButtons() {
     const buttons = document.querySelectorAll('.mini-copy-btn');
     buttons.forEach(btn => {
@@ -1186,7 +1248,6 @@ function bindCopyButtons() {
     });
 }
 
-// 实时更新运行时长
 function updateRuntime() {
     const now = Date.now();
     const diff = now - CONFIG.serverStartTime;
@@ -1200,7 +1261,6 @@ function updateRuntime() {
     document.getElementById("runtime-display").innerText = `${hours}:${formatNum(minutes)}:${formatNum(seconds)}`;
 }
 
-// 玩法大全弹窗控制
 function openGameplayModal() {
     document.getElementById("gameplay-modal").style.display = "flex";
 }
@@ -1208,7 +1268,6 @@ function closeGameplayModal() {
     document.getElementById("gameplay-modal").style.display = "none";
 }
 
-// 点击弹窗外部关闭
 document.getElementById("gameplay-modal").addEventListener("click", function(e) {
     if (e.target === this) {
         closeGameplayModal();
@@ -1217,4 +1276,4 @@ document.getElementById("gameplay-modal").addEventListener("click", function(e) 
 </script>
 
 </body>
-</html>
+    </html>
