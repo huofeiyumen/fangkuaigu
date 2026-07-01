@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>方块谷 - 我的世界网易高端租赁服</title>
+
+    <!-- ===== QQ / 微信 / 社交平台 分享卡片 Meta 标签 ===== -->
+    <title>方块谷 - 我的世界网易高端纯净生存服</title>
+    <meta name="description" content="网易我的世界高端纯净生存租赁服 | 永不换档 · 长期稳定 · 自由建造 · 你的第二个世界。服务器号：82512428">
+    <meta property="og:title" content="方块谷 · 网易我的世界高端纯净生存服" />
+    <meta property="og:description" content="永不换档 · 长期稳定 · 自由建造。输入服务器号 82512428 和密码 276492 即可加入。你的第二个方块世界。" />
+    <!-- 草方块图片（Minecraft 官方 Wiki 图片） -->
+    <meta property="og:image" content="https://minecraft.wiki/images/Grass_Block_JE7_BE6.png" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:url" content="https://huofeiyumen.github.io/fangkuaigu/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="方块谷 · 网易我的世界高端纯净生存服" />
+    <meta name="twitter:description" content="永不换档 · 长期稳定 · 自由建造。输入服务器号 82512428 即可加入。" />
+    <meta name="twitter:image" content="https://minecraft.wiki/images/Grass_Block_JE7_BE6.png" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
     <style>
         * {
             margin: 0;
@@ -39,7 +57,6 @@
             --tag-contrib: #e6fff2;
             --tag-contrib-text: #10b981;
 
-            /* ===== CSS 变量（由 CONFIG 动态控制） ===== */
             --progress-height: 3px;
             --progress-color: var(--gradient);
             --card-hover-offset: -6px;
@@ -48,17 +65,24 @@
             --scroll-duration: 0.9s;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background: var(--light-bg);
             color: var(--text);
             overflow-x: hidden;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(64, 128, 255, 0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(108, 92, 231, 0.05) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(22, 93, 255, 0.04) 0%, transparent 45%);
+            animation: bgFloat 22s ease-in-out infinite alternate;
         }
 
-        /* ===== 滚动进度条 ===== */
+        @keyframes bgFloat {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+            100% { background-position: 8% 6%, -4% 10%, 6% -4%; }
+        }
+
         #progress-bar {
             position: fixed;
             top: 0;
@@ -71,7 +95,6 @@
             box-shadow: 0 0 10px rgba(22, 93, 255, 0.3);
         }
 
-        /* ===== 打字机光标 ===== */
         .typewriter-cursor::after {
             content: '|';
             display: inline-block;
@@ -85,7 +108,6 @@
             50% { opacity: 0; }
         }
 
-        /* ===== 滚动动画样式（数值由 CONFIG 控制） ===== */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(var(--scroll-translate)) scale(var(--scroll-scale));
@@ -98,7 +120,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* ===== 卡片悬停/触摸抬起效果 ===== */
         .stat-box,
         .gameplay-card,
         .feature-box,
@@ -107,7 +128,6 @@
         .community-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
-        /* 电脑悬停 */
         .stat-box:hover,
         .gameplay-card:hover,
         .feature-box:hover,
@@ -117,7 +137,6 @@
             transform: translateY(var(--card-hover-offset));
             box-shadow: 0 12px 30px rgba(22, 93, 255, 0.12);
         }
-        /* 手机触摸（点击时） */
         .stat-box:active,
         .gameplay-card:active,
         .feature-box:active,
@@ -129,7 +148,6 @@
             transition-duration: 0.05s;
         }
 
-        /* 特定卡片原有hover保留（覆盖部分） */
         .stat-box:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(22, 93, 255, 0.1); }
         .gameplay-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(22, 93, 255, 0.1); background: var(--white); }
         .feature-box:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(22, 93, 255, 0.1); border-color: var(--main); background: var(--white); }
@@ -137,7 +155,6 @@
         .guide-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(22, 93, 255, 0.08); }
         .community-card:hover { box-shadow: 0 12px 40px rgba(22, 93, 255, 0.1); }
 
-        /* 手机触摸统一起见 */
         .stat-box:active,
         .gameplay-card:active,
         .feature-box:active,
@@ -180,10 +197,7 @@
             transition: 0.3s;
             cursor: pointer;
         }
-
-        .nav-menu a:hover {
-            color: var(--main);
-        }
+        .nav-menu a:hover { color: var(--main); }
 
         .btn {
             padding: 10px 24px;
@@ -198,14 +212,11 @@
             text-decoration: none;
             display: inline-block;
         }
-
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(22, 93, 255, 0.4);
         }
-        .btn:active {
-            transform: translateY(0px) scale(0.96);
-        }
+        .btn:active { transform: translateY(0px) scale(0.96); }
 
         .hero {
             min-height: 100vh;
@@ -215,7 +226,7 @@
             justify-content: center;
             text-align: center;
             padding: 120px 20px 60px;
-            background: radial-gradient(circle at top center, rgba(64, 128, 255, 0.1) 0%, transparent 50%), var(--light-bg);
+            background: radial-gradient(circle at top center, rgba(64, 128, 255, 0.08) 0%, transparent 50%), transparent;
         }
 
         .hero h1 {
@@ -271,12 +282,10 @@
             align-items: center;
             gap: 12px;
         }
-
         .runtime-label {
             color: var(--text-soft);
             font-size: 14px;
         }
-
         .runtime-value {
             font-family: "SF Mono", "Consolas", monospace;
             font-size: 20px;
@@ -292,18 +301,15 @@
             padding-top: 12px;
             border-top: 1px solid var(--border);
         }
-
         .info-item {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-
         .info-label {
             font-size: 14px;
             color: var(--text-soft);
         }
-
         .info-value {
             font-size: 16px;
             font-weight: 600;
@@ -322,26 +328,19 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .mini-copy-btn:hover {
             background: var(--gradient);
             color: white;
             border-color: transparent;
         }
-        .mini-copy-btn:active {
-            transform: scale(0.92);
-        }
-
+        .mini-copy-btn:active { transform: scale(0.92); }
         .mini-copy-btn.copied {
             background: #10b981;
             color: white;
             border-color: transparent;
         }
 
-        .section {
-            padding: 100px 5%;
-        }
-
+        .section { padding: 100px 5%; }
         .section-title {
             text-align: center;
             font-size: 36px;
@@ -351,7 +350,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .section-desc {
             text-align: center;
             color: var(--text-soft);
@@ -360,10 +358,7 @@
             font-size: 16px;
         }
 
-        .stats {
-            background: var(--white);
-        }
-
+        .stats { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(4px); }
         .stats-grid {
             max-width: 1000px;
             margin: 0 auto;
@@ -371,30 +366,22 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
         }
-
         .stat-box {
             text-align: center;
             padding: 30px;
             border-radius: 20px;
-            background: var(--light-bg);
+            background: var(--white);
             border: 1px solid var(--border);
         }
-
         .stat-box h3 {
             font-size: 32px;
             color: var(--main);
             margin-bottom: 8px;
             font-family: "SF Mono", "Consolas", monospace;
         }
+        .stat-box p { color: var(--text-soft); }
 
-        .stat-box p {
-            color: var(--text-soft);
-        }
-
-        .gameplay {
-            background: var(--white);
-        }
-
+        .gameplay { background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(4px); }
         .gameplay-grid {
             max-width: 1200px;
             margin: 0 auto;
@@ -402,16 +389,14 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 36px;
         }
-
         .gameplay-card {
             display: flex;
             gap: 24px;
             padding: 36px;
-            background: var(--light-bg);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: 20px;
         }
-
         .gameplay-icon {
             flex-shrink: 0;
             width: 56px;
@@ -424,23 +409,18 @@
             border-radius: 14px;
             box-shadow: 0 4px 12px rgba(22, 93, 255, 0.25);
         }
-
         .gameplay-content h3 {
             font-size: 20px;
             margin-bottom: 10px;
             color: var(--text);
         }
-
         .gameplay-content p {
             color: var(--text-soft);
             line-height: 1.7;
             font-size: 15px;
         }
 
-        .guide {
-            background: var(--light-bg);
-        }
-
+        .guide { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(4px); }
         .guide-wrap {
             max-width: 1000px;
             margin: 0 auto;
@@ -448,14 +428,12 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
-
         .guide-card {
             padding: 36px 32px;
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 20px;
         }
-
         .guide-card h3 {
             font-size: 20px;
             margin-bottom: 20px;
@@ -464,18 +442,13 @@
             align-items: center;
             gap: 10px;
         }
-
-        .guide-card h3 span {
-            font-size: 22px;
-        }
-
+        .guide-card h3 span { font-size: 22px; }
         .download-btns {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-bottom: 16px;
         }
-
         .download-btn {
             display: flex;
             align-items: center;
@@ -490,31 +463,22 @@
             font-size: 15px;
             transition: 0.3s;
         }
-
         .download-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(22, 93, 255, 0.3);
         }
-        .download-btn:active {
-            transform: scale(0.96);
-        }
-
+        .download-btn:active { transform: scale(0.96); }
         .download-btn.secondary {
             background: var(--white);
             color: var(--main);
             border: 1px solid var(--border);
         }
-
         .guide-tip {
             font-size: 13px;
             color: var(--text-soft);
             line-height: 1.6;
         }
-
-        .guide-steps {
-            list-style: none;
-        }
-
+        .guide-steps { list-style: none; }
         .guide-steps li {
             padding: 10px 0;
             color: var(--text-soft);
@@ -522,20 +486,13 @@
             line-height: 1.6;
             border-bottom: 1px dashed var(--border);
         }
-
-        .guide-steps li:last-child {
-            border-bottom: none;
-        }
-
+        .guide-steps li:last-child { border-bottom: none; }
         .guide-steps li strong {
             color: var(--main);
             font-weight: 600;
         }
 
-        .features {
-            background: var(--white);
-        }
-
+        .features { background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(4px); }
         .feature-grid {
             max-width: 1100px;
             margin: 0 auto;
@@ -543,35 +500,25 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
-
         .feature-box {
-            background: var(--light-bg);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: 24px;
             padding: 40px;
             text-align: left;
         }
-
         .feature-box h3 {
             font-size: 22px;
             margin-bottom: 12px;
             color: var(--text);
         }
-
         .feature-box p {
             color: var(--text-soft);
             line-height: 1.7;
         }
 
-        .community-section {
-            background: var(--light-bg);
-        }
-
-        .community-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
+        .community-section { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(4px); }
+        .community-wrapper { max-width: 600px; margin: 0 auto; }
         .community-card {
             background: var(--white);
             border: 1px solid var(--border);
@@ -580,35 +527,29 @@
             text-align: center;
             box-shadow: 0 8px 30px rgba(22, 93, 255, 0.06);
         }
-
         .community-card .big-icon {
             font-size: 72px;
             margin-bottom: 16px;
         }
-
         .community-card h3 {
             font-size: 24px;
             margin-bottom: 8px;
             color: var(--text);
         }
-
         .community-card .group-number {
             color: var(--text-soft);
             margin-bottom: 6px;
             font-size: 16px;
         }
-
         .community-card .group-number strong {
             color: var(--main);
             font-size: 22px;
         }
-
         .community-card .sub-text {
             color: var(--text-soft);
             font-size: 14px;
             margin-bottom: 24px;
         }
-
         .community-card .btn-join {
             display: inline-block;
             padding: 14px 48px;
@@ -623,55 +564,28 @@
             box-shadow: 0 4px 15px rgba(22, 93, 255, 0.3);
             text-decoration: none;
         }
-
         .community-card .btn-join:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(22, 93, 255, 0.4);
         }
-        .community-card .btn-join:active {
-            transform: scale(0.96);
-        }
-
+        .community-card .btn-join:active { transform: scale(0.96); }
         .community-card .copy-row {
             margin-top: 16px;
             font-size: 13px;
             color: var(--text-soft);
         }
-
-        .community-card .copy-row .mini-copy-btn {
-            padding: 4px 14px;
-        }
+        .community-card .copy-row .mini-copy-btn { padding: 4px 14px; }
 
         @media (max-width: 640px) {
-            .community-card {
-                padding: 32px 20px;
-            }
-            .community-card .big-icon {
-                font-size: 52px;
-            }
-            .community-card h3 {
-                font-size: 20px;
-            }
-            .community-card .btn-join {
-                padding: 12px 32px;
-                font-size: 16px;
-                width: 100%;
-            }
+            .community-card { padding: 32px 20px; }
+            .community-card .big-icon { font-size: 52px; }
+            .community-card h3 { font-size: 20px; }
+            .community-card .btn-join { padding: 12px 32px; font-size: 16px; width: 100%; }
         }
 
-        .team {
-            background: var(--light-bg);
-        }
-
-        .team-section {
-            max-width: 1100px;
-            margin: 0 auto 50px;
-        }
-
-        .team-section:last-child {
-            margin-bottom: 0;
-        }
-
+        .team { background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(4px); }
+        .team-section { max-width: 1100px; margin: 0 auto 50px; }
+        .team-section:last-child { margin-bottom: 0; }
         .team-subtitle {
             font-size: 20px;
             font-weight: 600;
@@ -681,44 +595,37 @@
             align-items: center;
             gap: 10px;
         }
-
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
-
         .member-card {
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px 20px;
         }
-
         .member-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 12px;
         }
-
         .member-name {
             font-size: 18px;
             font-weight: 600;
             color: var(--text);
         }
-
         .member-tag {
             padding: 3px 10px;
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
         }
-
         .tag-owner { background: var(--tag-owner); color: var(--tag-owner-text); }
         .tag-admin { background: var(--tag-admin); color: var(--tag-admin-text); }
         .tag-contrib { background: var(--tag-contrib); color: var(--tag-contrib-text); }
-
         .member-desc {
             font-size: 14px;
             color: var(--text-soft);
@@ -738,12 +645,10 @@
             justify-content: center;
             animation: fadeIn 0.3s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         .modal-content {
             background: rgba(255, 255, 255, 0.95);
             width: 90%;
@@ -758,12 +663,10 @@
             backdrop-filter: blur(20px);
             border: 1px solid var(--border);
         }
-
         @keyframes slideUp {
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
         .close {
             position: absolute;
             top: 20px;
@@ -773,13 +676,8 @@
             color: var(--text-soft);
             transition: 0.2s;
         }
-
-        .close:hover {
-            color: var(--main);
-        }
-        .close:active {
-            transform: scale(0.9);
-        }
+        .close:hover { color: var(--main); }
+        .close:active { transform: scale(0.9); }
 
         .gameplay-modal-title {
             font-size: 28px;
@@ -795,37 +693,29 @@
             padding: 22px 0;
             border-bottom: 1px solid var(--border);
         }
-
-        .gameplay-item:last-child {
-            border-bottom: none;
-        }
-
+        .gameplay-item:last-child { border-bottom: none; }
         .gameplay-item-header {
             display: flex;
             align-items: center;
             gap: 12px;
             margin-bottom: 10px;
         }
-
         .gameplay-tag {
             padding: 3px 12px;
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
         }
-
         .tag-free { background: var(--tag-free); color: var(--tag-free-text); }
         .tag-core { background: var(--tag-core); color: var(--tag-core-text); }
         .tag-econ { background: var(--tag-econ); color: var(--tag-econ-text); }
         .tag-challenge { background: var(--tag-challenge); color: var(--tag-challenge-text); }
         .tag-coming { background: var(--tag-coming); color: var(--tag-coming-text); }
-
         .gameplay-item-title {
             font-size: 18px;
             font-weight: 600;
             color: var(--text);
         }
-
         .gameplay-item-desc {
             font-size: 14px;
             color: var(--text-soft);
@@ -846,651 +736,553 @@
             transition: 0.3s;
             box-shadow: 0 4px 15px rgba(22, 93, 255, 0.3);
         }
-
         .gameplay-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(22, 93, 255, 0.4);
         }
-        .gameplay-btn:active {
-            transform: scale(0.96);
-        }
+        .gameplay-btn:active { transform: scale(0.96); }
 
         footer {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
             padding: 40px;
             text-align: center;
             border-top: 1px solid var(--border);
             color: var(--text-soft);
             font-size: 14px;
         }
-
-        footer p + p {
-            margin-top: 8px;
-        }
+        footer p + p { margin-top: 8px; }
 
         @media (max-width: 768px) {
-            .nav-menu {display: none;}
-            .hero h1 {font-size: 42px;}
-            .hero p {font-size: 16px;}
-            .hero-info-panel {
-                padding: 18px 24px;
-                width: 100%;
-                max-width: 400px;
-            }
-            .server-info-line {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }
-            .stats-grid, .feature-grid, .gameplay-grid, .guide-wrap, .team-grid {grid-template-columns: 1fr;}
-            .section-title {font-size: 28px;}
-            .gameplay-card {flex-direction: column; gap: 16px;}
-            .modal-content {
-                max-width: 95%;
-                max-height: 90vh;
-                padding: 30px 20px;
-            }
-            .community-card {
-                padding: 32px 20px;
-            }
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 42px; }
+            .hero p { font-size: 16px; }
+            .hero-info-panel { padding: 18px 24px; width: 100%; max-width: 400px; }
+            .server-info-line { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .stats-grid, .feature-grid, .gameplay-grid, .guide-wrap, .team-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 28px; }
+            .gameplay-card { flex-direction: column; gap: 16px; }
+            .modal-content { max-width: 95%; max-height: 90vh; padding: 30px 20px; }
+            .community-card { padding: 32px 20px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== 滚动进度条 ===== -->
-<div id="progress-bar"></div>
+    <div id="progress-bar"></div>
 
-<div class="navbar">
-    <div class="logo" id="nav-logo"></div>
-    <div class="nav-menu">
-        <a href="#home">首页</a>
-        <a href="#gameplay">玩法介绍</a>
-        <a href="#guide">新手指引</a>
-        <a href="#team">管理团队</a>
-    </div>
-    <button class="btn" onclick="openGameplayModal()">玩法大全</button>
-</div>
-
-<section class="hero" id="home">
-    <h1 id="typewriter-title"></h1>
-    <p id="server-slogan"></p>
-    <div class="tag-group" id="tag-group"></div>
-    
-    <div class="hero-info-panel">
-        <div class="runtime-line">
-            <span class="runtime-label">已稳定运行</span>
-            <span class="runtime-value" id="runtime-display">0000:00:00</span>
+    <div class="navbar">
+        <div class="logo" id="nav-logo"></div>
+        <div class="nav-menu">
+            <a href="#home">首页</a>
+            <a href="#gameplay">玩法介绍</a>
+            <a href="#guide">新手指引</a>
+            <a href="#team">管理团队</a>
         </div>
-        <div class="server-info-line">
-            <div class="info-item">
-                <span class="info-label">服务器号</span>
-                <span class="info-value" id="sid-text">82512428</span>
-                <button class="mini-copy-btn" data-text="82512428">复制</button>
+        <button class="btn" onclick="openGameplayModal()">玩法大全</button>
+    </div>
+
+    <section class="hero" id="home">
+        <h1 id="typewriter-title"></h1>
+        <p id="server-slogan"></p>
+        <div class="tag-group" id="tag-group"></div>
+
+        <div class="hero-info-panel">
+            <div class="runtime-line">
+                <span class="runtime-label">已稳定运行</span>
+                <span class="runtime-value" id="runtime-display">0000:00:00</span>
             </div>
-            <div class="info-item">
-                <span class="info-label">密码</span>
-                <span class="info-value" id="spwd-text">276492</span>
-                <button class="mini-copy-btn" data-text="276492">复制</button>
+            <div class="server-info-line">
+                <div class="info-item">
+                    <span class="info-label">服务器号</span>
+                    <span class="info-value" id="sid-text">82512428</span>
+                    <button class="mini-copy-btn" data-text="82512428">复制</button>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">密码</span>
+                    <span class="info-value" id="spwd-text">276492</span>
+                    <button class="mini-copy-btn" data-text="276492">复制</button>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="section stats">
-    <h2 class="section-title">服务器数据</h2>
-    <p class="section-desc">长期稳定运营，用数据证明品质</p>
-    <div class="stats-grid" id="stats-grid"></div>
-</section>
+    <section class="section stats">
+        <h2 class="section-title">服务器数据</h2>
+        <p class="section-desc">长期稳定运营，用数据证明品质</p>
+        <div class="stats-grid" id="stats-grid"></div>
+    </section>
 
-<section class="section gameplay" id="gameplay">
-    <h2 class="section-title">核心玩法介绍</h2>
-    <p class="section-desc">原汁原味的原版体验，丰富多元的游玩内容</p>
-    <div class="gameplay-grid" id="gameplay-grid"></div>
-    <button class="gameplay-btn" onclick="openGameplayModal()">查看完整玩法大全</button>
-</section>
+    <section class="section gameplay" id="gameplay">
+        <h2 class="section-title">核心玩法介绍</h2>
+        <p class="section-desc">原汁原味的原版体验，丰富多元的游玩内容</p>
+        <div class="gameplay-grid" id="gameplay-grid"></div>
+        <button class="gameplay-btn" onclick="openGameplayModal()">查看完整玩法大全</button>
+    </section>
 
-<section class="section guide" id="guide">
-    <h2 class="section-title">新手入服指引</h2>
-    <p class="section-desc">仅支持网易我的世界正版进入，国际版无法加入，无需审核输入密码即可游玩</p>
-    <div class="guide-wrap">
-        <div class="guide-card animate-on-scroll">
-            <h3><span>📥</span> 官方正版下载</h3>
-            <div class="download-btns">
-                <a href="https://mc.163.com/" target="_blank" class="download-btn">
-                    💻 电脑端官网下载
+    <section class="section guide" id="guide">
+        <h2 class="section-title">新手入服指引</h2>
+        <p class="section-desc">仅支持网易我的世界正版进入，国际版无法加入，无需审核输入密码即可游玩</p>
+        <div class="guide-wrap">
+            <div class="guide-card animate-on-scroll">
+                <h3><span>📥</span> 官方正版下载</h3>
+                <div class="download-btns">
+                    <a href="https://mc.163.com/" target="_blank" class="download-btn">💻 电脑端官网下载</a>
+                    <a href="https://mc.163.com/m/" target="_blank" class="download-btn secondary">📱 手机端官网下载</a>
+                </div>
+                <p class="guide-tip">
+                    官方网址：mc.163.com<br>
+                    请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑
+                </p>
+            </div>
+            <div class="guide-card animate-on-scroll">
+                <h3><span>📖</span> 快速入服步骤</h3>
+                <ul class="guide-steps">
+                    <li>1. 下载并安装<strong>网易我的世界</strong>客户端，登录网易账号</li>
+                    <li>2. 进入游戏大厅，点击右侧「<strong>租赁服</strong>」入口</li>
+                    <li>3. 输入服务器号：<strong>82512428</strong>，点击搜索</li>
+                    <li>4. 输入访问密码：<strong>276492</strong>，验证通过即可进入</li>
+                    <li>5. <strong>无需审核</strong>，密码正确即可直接进入游戏自由游玩</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section features" id="feature">
+        <h2 class="section-title">为什么选择我们</h2>
+        <p class="section-desc">拒绝快餐式关服，坚持长期运营，给你一个安心建造的家</p>
+        <div class="feature-grid" id="feature-grid"></div>
+    </section>
+
+    <section class="section community-section" id="community">
+        <h2 class="section-title">👥 玩家社区</h2>
+        <p class="section-desc">加入QQ群，与所有玩家一起畅聊</p>
+        <div class="community-wrapper">
+            <div class="community-card animate-on-scroll">
+                <div class="big-icon">💬</div>
+                <h3>方块谷玩家交流群</h3>
+                <div class="group-number">群号：<strong>904893199</strong></div>
+                <div class="sub-text">加群一起玩，随时找队友</div>
+                <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=cg%2B3rwEF3wsw6VjdH6j%2BtasPl7dW1hNHLhZuMnpuR6p8RWGGh%2F2KWe2LDGaRNvP%2B&busi_data=eyJncm91cENvZGUiOiI5MDQ4OTMxOTkiLCJ0b2tlbiI6IkVTVWZvZEo1QkRtTW5pNFdwSzh0Ry8wRmVrRGNZYkZuaEFFMzh6VDZ2WVoyWnI4dUhMUjVvU1dPZmU0ekRJZzkiLCJ1aW4iOiIzODI5MzU0MTYzIn0%3D&data=XtrCEL3dKDrg6WtKPmvcCiyDiCZUtZ7akcMjcYiB01kXSEESP4AHzzmf9hsVZOB6KSwlUMY77GPV6B78LBYy4w&svctype=4&tempid=h5_group_info" target="_blank" class="btn-join">
+                    🚀 立即加群
                 </a>
-                <a href="https://mc.163.com/m/" target="_blank" class="download-btn secondary">
-                    📱 手机端官网下载
-                </a>
-            </div>
-            <p class="guide-tip">
-                官方网址：mc.163.com<br>
-                请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑
-            </p>
-        </div>
-        <div class="guide-card animate-on-scroll">
-            <h3><span>📖</span> 快速入服步骤</h3>
-            <ul class="guide-steps">
-                <li>1. 下载并安装<strong>网易我的世界</strong>客户端，登录网易账号</li>
-                <li>2. 进入游戏大厅，点击右侧「<strong>租赁服</strong>」入口</li>
-                <li>3. 输入服务器号：<strong>82512428</strong>，点击搜索</li>
-                <li>4. 输入访问密码：<strong>276492</strong>，验证通过即可进入</li>
-                <li>5. <strong>无需审核</strong>，密码正确即可直接进入游戏自由游玩</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="section features" id="feature">
-    <h2 class="section-title">为什么选择我们</h2>
-    <p class="section-desc">拒绝快餐式关服，坚持长期运营，给你一个安心建造的家</p>
-    <div class="feature-grid" id="feature-grid"></div>
-</section>
-
-<section class="section community-section" id="community">
-    <h2 class="section-title">👥 玩家社区</h2>
-    <p class="section-desc">加入QQ群，与所有玩家一起畅聊</p>
-    <div class="community-wrapper">
-        <div class="community-card animate-on-scroll">
-            <div class="big-icon">💬</div>
-            <h3>方块谷玩家交流群</h3>
-            <div class="group-number">群号：<strong>904893199</strong></div>
-            <div class="sub-text">加群一起玩，随时找队友</div>
-            <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=cg%2B3rwEF3wsw6VjdH6j%2BtasPl7dW1hNHLhZuMnpuR6p8RWGGh%2F2KWe2LDGaRNvP%2B&busi_data=eyJncm91cENvZGUiOiI5MDQ4OTMxOTkiLCJ0b2tlbiI6IkVTVWZvZEo1QkRtTW5pNFdwSzh0Ry8wRmVrRGNZYkZuaEFFMzh6VDZ2WVoyWnI4dUhMUjVvU1dPZmU0ekRJZzkiLCJ1aW4iOiIzODI5MzU0MTYzIn0%3D&data=XtrCEL3dKDrg6WtKPmvcCiyDiCZUtZ7akcMjcYiB01kXSEESP4AHzzmf9hsVZOB6KSwlUMY77GPV6B78LBYy4w&svctype=4&tempid=h5_group_info" target="_blank" class="btn-join">
-                🚀 立即加群
-            </a>
-            <div class="copy-row">
-                <button class="mini-copy-btn" onclick="copyText('904893199')">复制群号</button>
+                <div class="copy-row">
+                    <button class="mini-copy-btn" onclick="copyText('904893199')">复制群号</button>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section class="section team" id="team">
+        <h2 class="section-title">管理团队 & 荣誉贡献</h2>
+        <p class="section-desc">感谢每一位为服务器付出的伙伴，方块谷因你们而更好</p>
+
+        <div class="team-section">
+            <h3 class="team-subtitle">👑 服务器服主</h3>
+            <div class="team-grid" id="owner-list"></div>
+        </div>
+        <div class="team-section">
+            <h3 class="team-subtitle">🛡️ 服务器管理员</h3>
+            <div class="team-grid" id="admin-list"></div>
+        </div>
+        <div class="team-section">
+            <h3 class="team-subtitle">⭐ 荣誉贡献者</h3>
+            <div class="team-grid" id="contrib-list"></div>
+        </div>
+    </section>
+
+    <div class="modal" id="gameplay-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGameplayModal()">&times;</span>
+            <h2 class="gameplay-modal-title">方块谷 · 玩法大全</h2>
+            <div id="full-gameplay-content"></div>
+        </div>
     </div>
-</section>
 
-<section class="section team" id="team">
-    <h2 class="section-title">管理团队 & 荣誉贡献</h2>
-    <p class="section-desc">感谢每一位为服务器付出的伙伴，方块谷因你们而更好</p>
-    
-    <div class="team-section">
-        <h3 class="team-subtitle">👑 服务器服主</h3>
-        <div class="team-grid" id="owner-list"></div>
-    </div>
+    <footer id="footer-content"></footer>
 
-    <div class="team-section">
-        <h3 class="team-subtitle">🛡️ 服务器管理员</h3>
-        <div class="team-grid" id="admin-list"></div>
-    </div>
+    <script>
+        const CONFIG = {
+            serverName: "方块谷",
+            serverVersion: "1.20.4",
+            serverSlogan: "网易我的世界高端纯净生存租赁服 | 永不换档 · 长期稳定 · 自由建造 · 你的第二个世界",
+            serverId: "82512428",
+            serverPassword: "276492",
+            serverStartTime: Date.now() - 4085 * 3600 * 1000 - 8 * 60 * 1000 - 31 * 1000,
+            tags: ["版本 1.20.4", "纯净无魔改", "永不换档", "无需审核"],
+            stats: [
+                { number: "100", label: "长期稳定", suffix: "%" },
+                { number: "100", label: "纯净生存", suffix: "%" },
+                { number: "365", label: "每日在线奖励", suffix: "天" },
+                { number: "20", label: "网络延迟", suffix: "ms" }
+            ],
+            gameplay: [{
+                icon: "⛏️",
+                title: "纯净原版生存",
+                desc: "完整保留 Minecraft 原生生存玩法，无魔改、无氪金、无破坏平衡的插件。从撸树起步，挖矿、种田、驯兽、挑战末影龙，体验最纯粹的生存冒险乐趣。"
+            }, {
+                icon: "🏰",
+                title: "自由建造创作",
+                desc: "超大无限制主世界，支持所有建筑风格发挥。无论是温馨小屋、中世纪城堡、现代化都市还是红石机械，你都可以自由搭建，打造属于自己的方块世界。"
+            }, {
+                icon: "🎁",
+                title: "每日在线奖励",
+                desc: "每日登录即可领取生存物资礼包，新手进服赠送全套基础工具与食物。常驻玩家累计在线时长可解锁专属福利，轻松发育不肝不氪。"
+            }, {
+                icon: "👥",
+                title: "友好社区氛围",
+                desc: "服内玩家友善和谐，严禁熊孩子破坏与偷窃，完善的权限与领地保护机制。可以结伴探险、共建小镇，结识志同道合的方块伙伴。"
+            }],
+            fullGameplay: [{
+                tagType: "free",
+                tagText: "自由",
+                title: "随便建筑 · 不限制红石",
+                desc: "全区域自由建造，红石机制无任何限制，发挥你的创造力。"
+            }, {
+                tagType: "core",
+                tagText: "核心",
+                title: "雪球菜单",
+                desc: "支持原地去世、传送主城、设置重生点、查看个人信息，以及玩家间相互传送。"
+            }, {
+                tagType: "econ",
+                tagText: "经济",
+                title: "货币系统",
+                desc: "主城使用货币购买各类物品（矿物、农作物等），你也可以售卖物资换取货币。\n✦ 新手初始背包需用货币解锁·货币还可升级装备"
+            }, {
+                tagType: "challenge",
+                tagText: "挑战",
+                title: "末地副本",
+                desc: "挑战成功后可获得丰厚奖励，考验你的战斗技巧。"
+            }, {
+                tagType: "coming",
+                tagText: "即将推出",
+                title: "公会系统",
+                desc: "组建你的团队，与伙伴一起征战方块大陆，敬请期待！"
+            }],
+            guide: {
+                pcDownloadUrl: "https://mc.163.com/",
+                mobileDownloadUrl: "https://mc.163.com/m/",
+                officialDomain: "mc.163.com"
+            },
+            team: {
+                owner: [{ name: "不方便透露", desc: "服务器创始人，负责整体运营与技术维护" }],
+                admins: [{ name: "不方便透露", desc: "负责更新维护本网站和处理玩家事务参与过多个主城建筑的建设" }],
+                contributors: [
+                    { name: "玖濋", desc: "帮忙修建过末地主城" },
+                    { name: "骑猪勇士ye", desc: "参与过主城建设材料收集" }
+                ]
+            },
+            features: [{
+                icon: "🌿",
+                title: "纯净原版生存",
+                desc: "无任何魔改、无氪金、无破坏平衡的插件，完全还原我的世界原生玩法，享受最纯粹的建造与冒险。"
+            }, {
+                icon: "🔒",
+                title: "永不换档删档",
+                desc: "固定租赁服档位，长期稳定运营，绝不随意关服、降级、删档，你的所有建筑与物资永久保存。"
+            }, {
+                icon: "🎁",
+                title: "每日在线福利",
+                desc: "新手友好，每日登录即可领取生存奖励，不肝不氪，轻松体验游戏乐趣。"
+            }, {
+                icon: "⚡",
+                title: "极致流畅体验",
+                desc: "支持20人同时在线。"
+            }],
+            footer: [
+                "方块谷我的世界网易租赁服 | 长期稳定运营中",
+                "本页面为玩家宣传站，游戏服务由网易官方提供 | 网站创始人：不方便透露"
+            ],
+            typewriterSpeed: 300,
+            typewriterDelay: 300,
+            numberDuration: 3000,
+            numberThreshold: 0.3,
+            scrollTranslate: 80,
+            scrollScale: 0.95,
+            scrollDuration: 0.9,
+            cardHoverOffset: -6,
+            progressHeight: 3,
+            progressColor: "linear-gradient(135deg, #4080FF 0%, #165DFF 100%)",
+            observerThreshold: 0.1,
+            staggerDelay: 0.08,
+        };
 
-    <div class="team-section">
-        <h3 class="team-subtitle">⭐ 荣誉贡献者</h3>
-        <div class="team-grid" id="contrib-list"></div>
-    </div>
-</section>
+        window.onload = function() {
+            const root = document.documentElement.style;
+            root.setProperty('--scroll-translate', CONFIG.scrollTranslate + 'px');
+            root.setProperty('--scroll-scale', CONFIG.scrollScale);
+            root.setProperty('--scroll-duration', CONFIG.scrollDuration + 's');
+            root.setProperty('--card-hover-offset', CONFIG.cardHoverOffset + 'px');
+            root.setProperty('--progress-height', CONFIG.progressHeight + 'px');
+            root.setProperty('--progress-color', CONFIG.progressColor);
 
-<div class="modal" id="gameplay-modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeGameplayModal()">&times;</span>
-        <h2 class="gameplay-modal-title">方块谷 · 玩法大全</h2>
-        <div id="full-gameplay-content"></div>
-    </div>
-</div>
+            const titleEl = document.getElementById('typewriter-title');
+            const fullText = CONFIG.serverName;
+            let charIndex = 0;
 
-<footer id="footer-content"></footer>
-
-<script>
-/* =========================================================
-   🎯 配置区域 —— 所有可调数值都在这里！
-   ========================================================= */
-const CONFIG = {
-    // ---- 基础信息 ----
-    serverName: "方块谷",
-    serverVersion: "1.20.4",
-    serverSlogan: "网易我的世界高端纯净生存租赁服 | 永不换档 · 长期稳定 · 自由建造 · 你的第二个世界",
-    serverId: "82512428",
-    serverPassword: "276492",
-    serverStartTime: Date.now() - 4085 * 3600 * 1000 - 8 * 60 * 1000 - 31 * 1000,
-
-    tags: [
-        "版本 1.20.4",
-        "纯净无魔改",
-        "永不换档",
-        "无需审核"
-    ],
-
-    stats: [
-        { number: "100", label: "长期稳定", suffix: "%" },
-        { number: "100", label: "纯净生存", suffix: "%" },
-        { number: "365", label: "每日在线奖励", suffix: "天" },
-        { number: "20", label: "网络延迟", suffix: "ms" }
-    ],
-
-    gameplay: [
-        {
-            icon: "⛏️",
-            title: "纯净原版生存",
-            desc: "完整保留 Minecraft 原生生存玩法，无魔改、无氪金、无破坏平衡的插件。从撸树起步，挖矿、种田、驯兽、挑战末影龙，体验最纯粹的生存冒险乐趣。"
-        },
-        {
-            icon: "🏰",
-            title: "自由建造创作",
-            desc: "超大无限制主世界，支持所有建筑风格发挥。无论是温馨小屋、中世纪城堡、现代化都市还是红石机械，你都可以自由搭建，打造属于自己的方块世界。"
-        },
-        {
-            icon: "🎁",
-            title: "每日在线奖励",
-            desc: "每日登录即可领取生存物资礼包，新手进服赠送全套基础工具与食物。常驻玩家累计在线时长可解锁专属福利，轻松发育不肝不氪。"
-        },
-        {
-            icon: "👥",
-            title: "友好社区氛围",
-            desc: "服内玩家友善和谐，严禁熊孩子破坏与偷窃，完善的权限与领地保护机制。可以结伴探险、共建小镇，结识志同道合的方块伙伴。"
-        }
-    ],
-
-    fullGameplay: [
-        {
-            tagType: "free",
-            tagText: "自由",
-            title: "随便建筑 · 不限制红石",
-            desc: "全区域自由建造，红石机制无任何限制，发挥你的创造力。"
-        },
-        {
-            tagType: "core",
-            tagText: "核心",
-            title: "雪球菜单",
-            desc: "支持原地去世、传送主城、设置重生点、查看个人信息，以及玩家间相互传送。"
-        },
-        {
-            tagType: "econ",
-            tagText: "经济",
-            title: "货币系统",
-            desc: "主城使用货币购买各类物品（矿物、农作物等），你也可以售卖物资换取货币。\n✦ 新手初始背包需用货币解锁·货币还可升级装备"
-        },
-        {
-            tagType: "challenge",
-            tagText: "挑战",
-            title: "末地副本",
-            desc: "挑战成功后可获得丰厚奖励，考验你的战斗技巧。"
-        },
-        {
-            tagType: "coming",
-            tagText: "即将推出",
-            title: "公会系统",
-            desc: "组建你的团队，与伙伴一起征战方块大陆，敬请期待！"
-        }
-    ],
-
-    guide: {
-        pcDownloadUrl: "https://mc.163.com/",
-        mobileDownloadUrl: "https://mc.163.com/m/",
-        officialDomain: "mc.163.com"
-    },
-
-    team: {
-        owner: [
-            { name: "不方便透露", desc: "服务器创始人，负责整体运营与技术维护" }
-        ],
-        admins: [
-            { name: "不方便透露", desc: "负责更新维护本网站和处理玩家事务参与过多个主城建筑的建设" },
-        ],
-        contributors: [
-            { name: "玖濋", desc: "帮忙修建过末地主城" },
-            { name: "骑猪勇士ye", desc: "参与过主城建设材料收集" },
-        ]
-    },
-
-    features: [
-        {
-            icon: "🌿",
-            title: "纯净原版生存",
-            desc: "无任何魔改、无氪金、无破坏平衡的插件，完全还原我的世界原生玩法，享受最纯粹的建造与冒险。"
-        },
-        {
-            icon: "🔒",
-            title: "永不换档删档",
-            desc: "固定租赁服档位，长期稳定运营，绝不随意关服、降级、删档，你的所有建筑与物资永久保存。"
-        },
-        {
-            icon: "🎁",
-            title: "每日在线福利",
-            desc: "新手友好，每日登录即可领取生存奖励，不肝不氪，轻松体验游戏乐趣。"
-        },
-        {
-            icon: "⚡",
-            title: "极致流畅体验",
-            desc: "支持20人同时在线。"
-        }
-    ],
-
-    footer: [
-        "方块谷我的世界网易租赁服 | 长期稳定运营中",
-        "本页面为玩家宣传站，游戏服务由网易官方提供 | 网站创始人：不方便透露"
-    ],
-
-    /* =========================================================
-       🎛️ 动态效果参数（所有可调数值）
-       ========================================================= */
-
-    // ---- 打字机效果 ----
-    typewriterSpeed: 300,           // 每字间隔（毫秒），越小越快
-    typewriterDelay: 300,           // 页面加载后延迟启动（毫秒）
-
-    // ---- 数字滚动 ----
-    numberDuration: 3000,           // 数字滚动动画总时长（毫秒）
-    numberThreshold: 0.3,           // 触发数字滚动的可见比例（0~1）
-
-    // ---- 滚动升起/降下动画 ----
-    scrollTranslate: 80,            // 位移距离（px），越大升降越明显
-    scrollScale: 0.95,              // 初始缩放（0.9~1），越小“弹出感”越强
-    scrollDuration: 0.9,            // 过渡时长（秒），越大越慢
-
-    // ---- 卡片悬停/触摸抬起 ----
-    cardHoverOffset: -6,            // 抬起位移（px），负值表示向上
-
-    // ---- 滚动进度条 ----
-    progressHeight: 3,              // 进度条厚度（px）
-    progressColor: "linear-gradient(135deg, #4080FF 0%, #165DFF 100%)",
-
-    // ---- 视口触发阈值 ----
-    observerThreshold: 0.1,         // 卡片升起/降下的触发阈值（0~1）
-    staggerDelay: 0.08,             // 卡片入场交错延迟（秒），0 表示同时
-};
-/* =========================================================
-   🎯 配置区域结束
-   ========================================================= */
-
-
-window.onload = function() {
-    // ---- 将 CONFIG 中的样式参数注入到 CSS 变量 ----
-    const root = document.documentElement.style;
-    root.setProperty('--scroll-translate', CONFIG.scrollTranslate + 'px');
-    root.setProperty('--scroll-scale', CONFIG.scrollScale);
-    root.setProperty('--scroll-duration', CONFIG.scrollDuration + 's');
-    root.setProperty('--card-hover-offset', CONFIG.cardHoverOffset + 'px');
-    root.setProperty('--progress-height', CONFIG.progressHeight + 'px');
-    root.setProperty('--progress-color', CONFIG.progressColor);
-
-    // ---- 打字机效果 ----
-    const titleEl = document.getElementById('typewriter-title');
-    const fullText = CONFIG.serverName;
-    let charIndex = 0;
-    function typeWriter() {
-        if (charIndex < fullText.length) {
-            titleEl.textContent = fullText.substring(0, charIndex + 1);
-            charIndex++;
-            setTimeout(typeWriter, CONFIG.typewriterSpeed);
-        } else {
-            titleEl.classList.add('typewriter-cursor');
-        }
-    }
-    setTimeout(typeWriter, CONFIG.typewriterDelay);
-
-    // ---- 其他初始化 ----
-    document.getElementById("nav-logo").innerText = CONFIG.serverName;
-    document.getElementById("server-slogan").innerText = CONFIG.serverSlogan;
-    document.getElementById("sid-text").innerText = CONFIG.serverId;
-    document.getElementById("spwd-text").innerText = CONFIG.serverPassword;
-    document.title = CONFIG.serverName + " - 我的世界网易高端租赁服";
-
-    const copyBtns = document.querySelectorAll('.mini-copy-btn');
-    copyBtns[0].dataset.text = CONFIG.serverId;
-    copyBtns[1].dataset.text = CONFIG.serverPassword;
-
-    const tagBox = document.getElementById("tag-group");
-    CONFIG.tags.forEach(tag => {
-        const span = document.createElement("span");
-        span.className = "tag";
-        span.innerText = tag;
-        tagBox.appendChild(span);
-    });
-
-    updateRuntime();
-    setInterval(updateRuntime, 1000);
-
-    // ---- 数字滚动 ----
-    const statsBox = document.getElementById("stats-grid");
-    const statItems = [];
-    CONFIG.stats.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.className = "stat-box animate-on-scroll";
-        div.innerHTML = `<h3 data-target="${item.number}" data-suffix="${item.suffix || ''}">0</h3><p>${item.label}</p>`;
-        statsBox.appendChild(div);
-        statItems.push({
-            el: div.querySelector('h3'),
-            target: parseFloat(item.number),
-            suffix: item.suffix || '',
-            animated: false
-        });
-    });
-
-    const numberObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const h3 = entry.target;
-                const parent = h3.closest('.stat-box');
-                if (!parent) return;
-                const index = Array.from(statsBox.children).indexOf(parent);
-                if (index === -1) return;
-                const item = statItems[index];
-                if (!item || item.animated) return;
-                item.animated = true;
-                animateNumber(h3, item.target, item.suffix, CONFIG.numberDuration);
+            function typeWriter() {
+                if (charIndex < fullText.length) {
+                    titleEl.textContent = fullText.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(typeWriter, CONFIG.typewriterSpeed);
+                } else {
+                    titleEl.classList.add('typewriter-cursor');
+                }
             }
-        });
-    }, { threshold: CONFIG.numberThreshold });
+            setTimeout(typeWriter, CONFIG.typewriterDelay);
 
-    statItems.forEach(item => {
-        numberObserver.observe(item.el);
-    });
+            document.getElementById("nav-logo").innerText = CONFIG.serverName;
+            document.getElementById("server-slogan").innerText = CONFIG.serverSlogan;
+            document.getElementById("sid-text").innerText = CONFIG.serverId;
+            document.getElementById("spwd-text").innerText = CONFIG.serverPassword;
+            document.title = CONFIG.serverName + " - 我的世界网易高端租赁服";
 
-    // ---- 玩法卡片 ----
-    const gameplayBox = document.getElementById("gameplay-grid");
-    CONFIG.gameplay.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.className = "gameplay-card animate-on-scroll";
-        div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
-        div.innerHTML = `
-            <div class="gameplay-icon">${item.icon}</div>
-            <div class="gameplay-content">
-                <h3>${item.title}</h3>
-                <p>${item.desc}</p>
-            </div>
-        `;
-        gameplayBox.appendChild(div);
-    });
+            const copyBtns = document.querySelectorAll('.mini-copy-btn');
+            copyBtns[0].dataset.text = CONFIG.serverId;
+            copyBtns[1].dataset.text = CONFIG.serverPassword;
 
-    // ---- 完整玩法 ----
-    const fullGameplayBox = document.getElementById("full-gameplay-content");
-    CONFIG.fullGameplay.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "gameplay-item";
-        const desc = item.desc.replace(/\n/g, "<br>");
-        div.innerHTML = `
-            <div class="gameplay-item-header">
-                <span class="gameplay-tag tag-${item.tagType}">${item.tagText}</span>
-                <h3 class="gameplay-item-title">${item.title}</h3>
-            </div>
-            <div class="gameplay-item-desc">${desc}</div>
-        `;
-        fullGameplayBox.appendChild(div);
-    });
+            const tagBox = document.getElementById("tag-group");
+            CONFIG.tags.forEach(tag => {
+                const span = document.createElement("span");
+                span.className = "tag";
+                span.innerText = tag;
+                tagBox.appendChild(span);
+            });
 
-    // ---- 下载链接 ----
-    document.querySelectorAll('.download-btn')[0].href = CONFIG.guide.pcDownloadUrl;
-    document.querySelectorAll('.download-btn')[1].href = CONFIG.guide.mobileDownloadUrl;
-    document.querySelector('.guide-tip').innerHTML = `官方网址：${CONFIG.guide.officialDomain}<br>请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑`;
+            updateRuntime();
+            setInterval(updateRuntime, 1000);
 
-    // ---- 特色功能 ----
-    const featureBox = document.getElementById("feature-grid");
-    CONFIG.features.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.className = "feature-box animate-on-scroll";
-        div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
-        div.innerHTML = `<h3>${item.icon} ${item.title}</h3><p>${item.desc}</p>`;
-        featureBox.appendChild(div);
-    });
+            const statsBox = document.getElementById("stats-grid");
+            const statItems = [];
+            CONFIG.stats.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.className = "stat-box animate-on-scroll";
+                div.innerHTML =
+                    `<h3 data-target="${item.number}" data-suffix="${item.suffix || ''}">0</h3><p>${item.label}</p>`;
+                statsBox.appendChild(div);
+                statItems.push({
+                    el: div.querySelector('h3'),
+                    target: parseFloat(item.number),
+                    suffix: item.suffix || '',
+                    animated: false
+                });
+            });
 
-    // ---- 团队 ----
-    renderTeamList('owner-list', CONFIG.team.owner, 'owner');
-    renderTeamList('admin-list', CONFIG.team.admins, 'admin');
-    renderTeamList('contrib-list', CONFIG.team.contributors, 'contrib');
+            const numberObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const h3 = entry.target;
+                        const parent = h3.closest('.stat-box');
+                        if (!parent) return;
+                        const index = Array.from(statsBox.children).indexOf(parent);
+                        if (index === -1) return;
+                        const item = statItems[index];
+                        if (!item || item.animated) return;
+                        item.animated = true;
+                        animateNumber(h3, item.target, item.suffix, CONFIG.numberDuration);
+                    }
+                });
+            }, { threshold: CONFIG.numberThreshold });
 
-    // ---- 页脚 ----
-    const footerBox = document.getElementById("footer-content");
-    CONFIG.footer.forEach(line => {
-        const p = document.createElement("p");
-        p.innerText = line;
-        footerBox.appendChild(p);
-    });
+            statItems.forEach(item => {
+                numberObserver.observe(item.el);
+            });
 
-    bindCopyButtons();
-    initScrollAnimation();
-    window.addEventListener('scroll', updateProgressBar);
-    updateProgressBar();
-};
+            const gameplayBox = document.getElementById("gameplay-grid");
+            CONFIG.gameplay.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.className = "gameplay-card animate-on-scroll";
+                div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
+                div.innerHTML = `
+                        <div class="gameplay-icon">${item.icon}</div>
+                        <div class="gameplay-content">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                        </div>
+                    `;
+                gameplayBox.appendChild(div);
+            });
 
-// ===== 数字滚动动画 =====
-function animateNumber(el, target, suffix, duration) {
-    const startTime = performance.now();
-    const startValue = 0;
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(startValue + (target - startValue) * ease);
-        el.textContent = current + suffix;
-        if (progress < 1) {
+            const fullGameplayBox = document.getElementById("full-gameplay-content");
+            CONFIG.fullGameplay.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "gameplay-item";
+                const desc = item.desc.replace(/\n/g, "<br>");
+                div.innerHTML = `
+                        <div class="gameplay-item-header">
+                            <span class="gameplay-tag tag-${item.tagType}">${item.tagText}</span>
+                            <h3 class="gameplay-item-title">${item.title}</h3>
+                        </div>
+                        <div class="gameplay-item-desc">${desc}</div>
+                    `;
+                fullGameplayBox.appendChild(div);
+            });
+
+            document.querySelectorAll('.download-btn')[0].href = CONFIG.guide.pcDownloadUrl;
+            document.querySelectorAll('.download-btn')[1].href = CONFIG.guide.mobileDownloadUrl;
+            document.querySelector('.guide-tip').innerHTML =
+                `官方网址：${CONFIG.guide.officialDomain}<br>请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑`;
+
+            const featureBox = document.getElementById("feature-grid");
+            CONFIG.features.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.className = "feature-box animate-on-scroll";
+                div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
+                div.innerHTML = `<h3>${item.icon} ${item.title}</h3><p>${item.desc}</p>`;
+                featureBox.appendChild(div);
+            });
+
+            renderTeamList('owner-list', CONFIG.team.owner, 'owner');
+            renderTeamList('admin-list', CONFIG.team.admins, 'admin');
+            renderTeamList('contrib-list', CONFIG.team.contributors, 'contrib');
+
+            const footerBox = document.getElementById("footer-content");
+            CONFIG.footer.forEach(line => {
+                const p = document.createElement("p");
+                p.innerText = line;
+                footerBox.appendChild(p);
+            });
+
+            bindCopyButtons();
+            initScrollAnimation();
+            window.addEventListener('scroll', updateProgressBar);
+            updateProgressBar();
+        };
+
+        function animateNumber(el, target, suffix, duration) {
+            const startTime = performance.now();
+            const startValue = 0;
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(startValue + (target - startValue) * ease);
+                el.textContent = current + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target + suffix;
+                }
+            }
             requestAnimationFrame(update);
-        } else {
-            el.textContent = target + suffix;
         }
-    }
-    requestAnimationFrame(update);
-}
 
-// ===== 滚动进度条 =====
-function updateProgressBar() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    document.getElementById('progress-bar').style.width = progress + '%';
-}
-
-// ===== 团队渲染 =====
-function renderTeamList(containerId, list, tagType) {
-    const container = document.getElementById(containerId);
-    const tagTextMap = {
-        owner: '服主',
-        admin: '管理员',
-        contrib: '贡献者'
-    };
-    list.forEach((member, index) => {
-        const div = document.createElement("div");
-        div.className = "member-card animate-on-scroll";
-        div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
-        div.innerHTML = `
-            <div class="member-top">
-                <span class="member-name">${member.name}</span>
-                <span class="member-tag tag-${tagType}">${tagTextMap[tagType]}</span>
-            </div>
-            <p class="member-desc">${member.desc}</p>
-        `;
-        container.appendChild(div);
-    });
-}
-
-// ===== 复制功能 =====
-function copyText(text) {
-    return new Promise((resolve) => {
-        if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(text).then(() => resolve(true))
-                .catch(() => resolve(fallbackCopy(text)));
-        } else {
-            resolve(fallbackCopy(text));
+        function updateProgressBar() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            document.getElementById('progress-bar').style.width = progress + '%';
         }
-    });
-}
 
-function fallbackCopy(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    textarea.style.top = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-        const success = document.execCommand('copy');
-        document.body.removeChild(textarea);
-        return success;
-    } catch (err) {
-        document.body.removeChild(textarea);
-        return false;
-    }
-}
+        function renderTeamList(containerId, list, tagType) {
+            const container = document.getElementById(containerId);
+            const tagTextMap = { owner: '服主', admin: '管理员', contrib: '贡献者' };
+            list.forEach((member, index) => {
+                const div = document.createElement("div");
+                div.className = "member-card animate-on-scroll";
+                div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
+                div.innerHTML = `
+                        <div class="member-top">
+                            <span class="member-name">${member.name}</span>
+                            <span class="member-tag tag-${tagType}">${tagTextMap[tagType]}</span>
+                        </div>
+                        <p class="member-desc">${member.desc}</p>
+                    `;
+                container.appendChild(div);
+            });
+        }
 
-function bindCopyButtons() {
-    const buttons = document.querySelectorAll('.mini-copy-btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', async function() {
-            const text = this.dataset.text;
-            const success = await copyText(text);
-            if (success) {
-                const originalText = this.innerText;
-                this.classList.add('copied');
-                this.innerText = '已复制';
-                setTimeout(() => {
-                    this.classList.remove('copied');
-                    this.innerText = originalText;
-                }, 1500);
+        function copyText(text) {
+            return new Promise((resolve) => {
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).then(() => resolve(true))
+                        .catch(() => resolve(fallbackCopy(text)));
+                } else {
+                    resolve(fallbackCopy(text));
+                }
+            });
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            textarea.style.top = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                const success = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                return success;
+            } catch (err) {
+                document.body.removeChild(textarea);
+                return false;
+            }
+        }
+
+        function bindCopyButtons() {
+            const buttons = document.querySelectorAll('.mini-copy-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const text = this.dataset.text;
+                    const success = await copyText(text);
+                    if (success) {
+                        const originalText = this.innerText;
+                        this.classList.add('copied');
+                        this.innerText = '已复制';
+                        setTimeout(() => {
+                            this.classList.remove('copied');
+                            this.innerText = originalText;
+                        }, 1500);
+                    }
+                });
+            });
+        }
+
+        function updateRuntime() {
+            const now = Date.now();
+            const diff = now - CONFIG.serverStartTime;
+            const totalSeconds = Math.floor(diff / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            const formatNum = (num) => num.toString().padStart(2, '0');
+            document.getElementById("runtime-display").innerText = `${hours}:${formatNum(minutes)}:${formatNum(seconds)}`;
+        }
+
+        function openGameplayModal() {
+            document.getElementById("gameplay-modal").style.display = "flex";
+        }
+
+        function closeGameplayModal() {
+            document.getElementById("gameplay-modal").style.display = "none";
+        }
+        document.getElementById("gameplay-modal").addEventListener("click", function(e) {
+            if (e.target === this) {
+                closeGameplayModal();
             }
         });
-    });
-}
 
-// ===== 运行时间 =====
-function updateRuntime() {
-    const now = Date.now();
-    const diff = now - CONFIG.serverStartTime;
-    const totalSeconds = Math.floor(diff / 1000);
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    const formatNum = (num) => num.toString().padStart(2, '0');
-    document.getElementById("runtime-display").innerText = `${hours}:${formatNum(minutes)}:${formatNum(seconds)}`;
-}
+        function initScrollAnimation() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: CONFIG.observerThreshold,
+                rootMargin: '0px'
+            });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
 
-// ===== 模态框 =====
-function openGameplayModal() {
-    document.getElementById("gameplay-modal").style.display = "flex";
-}
-function closeGameplayModal() {
-    document.getElementById("gameplay-modal").style.display = "none";
-}
-document.getElementById("gameplay-modal").addEventListener("click", function(e) {
-    if (e.target === this) {
-        closeGameplayModal();
-    }
-});
-
-// ===== 滚动动画（升起/降下 + 交错延迟） =====
-function initScrollAnimation() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            } else {
-                entry.target.classList.remove('visible');
-            }
-        });
-    }, {
-        threshold: CONFIG.observerThreshold,
-        rootMargin: '0px'
-    });
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
-}
-</script>
 </body>
-</html>
+    </html>
