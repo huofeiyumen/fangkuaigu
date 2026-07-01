@@ -38,6 +38,14 @@
             --tag-admin-text: #6366f1;
             --tag-contrib: #e6fff2;
             --tag-contrib-text: #10b981;
+
+            /* ===== CSS 变量（由 CONFIG 动态控制） ===== */
+            --progress-height: 3px;
+            --progress-color: var(--gradient);
+            --card-hover-offset: -6px;
+            --scroll-translate: 80px;
+            --scroll-scale: 0.95;
+            --scroll-duration: 0.9s;
         }
 
         html {
@@ -48,6 +56,96 @@
             background: var(--light-bg);
             color: var(--text);
             overflow-x: hidden;
+        }
+
+        /* ===== 滚动进度条 ===== */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: var(--progress-height);
+            background: var(--progress-color);
+            width: 0%;
+            z-index: 10000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(22, 93, 255, 0.3);
+        }
+
+        /* ===== 打字机光标 ===== */
+        .typewriter-cursor::after {
+            content: '|';
+            display: inline-block;
+            animation: blink 0.7s step-end infinite;
+            color: var(--main);
+            font-weight: 300;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ===== 滚动动画样式（数值由 CONFIG 控制） ===== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(var(--scroll-translate)) scale(var(--scroll-scale));
+            transition: opacity var(--scroll-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform var(--scroll-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, opacity;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ===== 卡片悬停/触摸抬起效果 ===== */
+        .stat-box,
+        .gameplay-card,
+        .feature-box,
+        .member-card,
+        .guide-card,
+        .community-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+        /* 电脑悬停 */
+        .stat-box:hover,
+        .gameplay-card:hover,
+        .feature-box:hover,
+        .member-card:hover,
+        .guide-card:hover,
+        .community-card:hover {
+            transform: translateY(var(--card-hover-offset));
+            box-shadow: 0 12px 30px rgba(22, 93, 255, 0.12);
+        }
+        /* 手机触摸（点击时） */
+        .stat-box:active,
+        .gameplay-card:active,
+        .feature-box:active,
+        .member-card:active,
+        .guide-card:active,
+        .community-card:active {
+            transform: translateY(var(--card-hover-offset)) scale(0.98);
+            box-shadow: 0 12px 30px rgba(22, 93, 255, 0.12);
+            transition-duration: 0.05s;
+        }
+
+        /* 特定卡片原有hover保留（覆盖部分） */
+        .stat-box:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(22, 93, 255, 0.1); }
+        .gameplay-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(22, 93, 255, 0.1); background: var(--white); }
+        .feature-box:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(22, 93, 255, 0.1); border-color: var(--main); background: var(--white); }
+        .member-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(22, 93, 255, 0.08); border-color: rgba(22,93,255,0.25); }
+        .guide-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(22, 93, 255, 0.08); }
+        .community-card:hover { box-shadow: 0 12px 40px rgba(22, 93, 255, 0.1); }
+
+        /* 手机触摸统一起见 */
+        .stat-box:active,
+        .gameplay-card:active,
+        .feature-box:active,
+        .member-card:active,
+        .guide-card:active,
+        .community-card:active {
+            transform: translateY(var(--card-hover-offset)) scale(0.98);
+            box-shadow: 0 12px 30px rgba(22, 93, 255, 0.15);
         }
 
         .navbar {
@@ -105,6 +203,9 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(22, 93, 255, 0.4);
         }
+        .btn:active {
+            transform: translateY(0px) scale(0.96);
+        }
 
         .hero {
             min-height: 100vh;
@@ -124,6 +225,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 16px;
+            min-height: 1.2em;
         }
 
         .hero p {
@@ -226,6 +328,9 @@
             color: white;
             border-color: transparent;
         }
+        .mini-copy-btn:active {
+            transform: scale(0.92);
+        }
 
         .mini-copy-btn.copied {
             background: #10b981;
@@ -273,18 +378,13 @@
             border-radius: 20px;
             background: var(--light-bg);
             border: 1px solid var(--border);
-            transition: 0.3s;
-        }
-
-        .stat-box:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(22, 93, 255, 0.1);
         }
 
         .stat-box h3 {
             font-size: 32px;
             color: var(--main);
             margin-bottom: 8px;
+            font-family: "SF Mono", "Consolas", monospace;
         }
 
         .stat-box p {
@@ -310,13 +410,6 @@
             background: var(--light-bg);
             border: 1px solid var(--border);
             border-radius: 20px;
-            transition: 0.4s;
-        }
-
-        .gameplay-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(22, 93, 255, 0.1);
-            background: var(--white);
         }
 
         .gameplay-icon {
@@ -361,12 +454,6 @@
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 20px;
-            transition: 0.3s;
-        }
-
-        .guide-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(22, 93, 255, 0.08);
         }
 
         .guide-card h3 {
@@ -407,6 +494,9 @@
         .download-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(22, 93, 255, 0.3);
+        }
+        .download-btn:active {
+            transform: scale(0.96);
         }
 
         .download-btn.secondary {
@@ -460,14 +550,6 @@
             border-radius: 24px;
             padding: 40px;
             text-align: left;
-            transition: 0.4s;
-        }
-
-        .feature-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(22, 93, 255, 0.1);
-            border-color: var(--main);
-            background: var(--white);
         }
 
         .feature-box h3 {
@@ -481,7 +563,6 @@
             line-height: 1.7;
         }
 
-        /* ========== 玩家社区 ========== */
         .community-section {
             background: var(--light-bg);
         }
@@ -498,11 +579,6 @@
             padding: 50px 44px;
             text-align: center;
             box-shadow: 0 8px 30px rgba(22, 93, 255, 0.06);
-            transition: 0.3s;
-        }
-
-        .community-card:hover {
-            box-shadow: 0 12px 40px rgba(22, 93, 255, 0.1);
         }
 
         .community-card .big-icon {
@@ -552,6 +628,9 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(22, 93, 255, 0.4);
         }
+        .community-card .btn-join:active {
+            transform: scale(0.96);
+        }
 
         .community-card .copy-row {
             margin-top: 16px;
@@ -579,7 +658,6 @@
                 width: 100%;
             }
         }
-        /* ========== 玩家社区结束 ========== */
 
         .team {
             background: var(--light-bg);
@@ -615,13 +693,6 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px 20px;
-            transition: 0.3s;
-        }
-
-        .member-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 24px rgba(22, 93, 255, 0.08);
-            border-color: rgba(22, 93, 255, 0.25);
         }
 
         .member-top {
@@ -706,6 +777,9 @@
         .close:hover {
             color: var(--main);
         }
+        .close:active {
+            transform: scale(0.9);
+        }
 
         .gameplay-modal-title {
             font-size: 28px;
@@ -777,6 +851,9 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(22, 93, 255, 0.4);
         }
+        .gameplay-btn:active {
+            transform: scale(0.96);
+        }
 
         footer {
             background: var(--white);
@@ -821,6 +898,9 @@
 </head>
 <body>
 
+<!-- ===== 滚动进度条 ===== -->
+<div id="progress-bar"></div>
+
 <div class="navbar">
     <div class="logo" id="nav-logo"></div>
     <div class="nav-menu">
@@ -833,7 +913,7 @@
 </div>
 
 <section class="hero" id="home">
-    <h1 id="server-name"></h1>
+    <h1 id="typewriter-title"></h1>
     <p id="server-slogan"></p>
     <div class="tag-group" id="tag-group"></div>
     
@@ -874,7 +954,7 @@
     <h2 class="section-title">新手入服指引</h2>
     <p class="section-desc">仅支持网易我的世界正版进入，国际版无法加入，无需审核输入密码即可游玩</p>
     <div class="guide-wrap">
-        <div class="guide-card">
+        <div class="guide-card animate-on-scroll">
             <h3><span>📥</span> 官方正版下载</h3>
             <div class="download-btns">
                 <a href="https://mc.163.com/" target="_blank" class="download-btn">
@@ -889,7 +969,7 @@
                 请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑
             </p>
         </div>
-        <div class="guide-card">
+        <div class="guide-card animate-on-scroll">
             <h3><span>📖</span> 快速入服步骤</h3>
             <ul class="guide-steps">
                 <li>1. 下载并安装<strong>网易我的世界</strong>客户端，登录网易账号</li>
@@ -908,12 +988,11 @@
     <div class="feature-grid" id="feature-grid"></div>
 </section>
 
-<!-- ========== 玩家社区 ========== -->
 <section class="section community-section" id="community">
     <h2 class="section-title">👥 玩家社区</h2>
     <p class="section-desc">加入QQ群，与所有玩家一起畅聊</p>
     <div class="community-wrapper">
-        <div class="community-card">
+        <div class="community-card animate-on-scroll">
             <div class="big-icon">💬</div>
             <h3>方块谷玩家交流群</h3>
             <div class="group-number">群号：<strong>904893199</strong></div>
@@ -927,7 +1006,6 @@
         </div>
     </div>
 </section>
-<!-- ========== 玩家社区结束 ========== -->
 
 <section class="section team" id="team">
     <h2 class="section-title">管理团队 & 荣誉贡献</h2>
@@ -961,9 +1039,10 @@
 
 <script>
 /* =========================================================
-   🎯 配置区域
+   🎯 配置区域 —— 所有可调数值都在这里！
    ========================================================= */
 const CONFIG = {
+    // ---- 基础信息 ----
     serverName: "方块谷",
     serverVersion: "1.20.4",
     serverSlogan: "网易我的世界高端纯净生存租赁服 | 永不换档 · 长期稳定 · 自由建造 · 你的第二个世界",
@@ -979,10 +1058,10 @@ const CONFIG = {
     ],
 
     stats: [
-        { number: "100%", label: "长期稳定" },
-        { number: "原版", label: "纯净生存" },
-        { number: "每日", label: "在线奖励" },
-        { number: "超低", label: "网络延迟" }
+        { number: "100", label: "长期稳定", suffix: "%" },
+        { number: "100", label: "纯净生存", suffix: "%" },
+        { number: "365", label: "每日在线奖励", suffix: "天" },
+        { number: "20", label: "网络延迟", suffix: "ms" }
     ],
 
     gameplay: [
@@ -1086,7 +1165,35 @@ const CONFIG = {
     footer: [
         "方块谷我的世界网易租赁服 | 长期稳定运营中",
         "本页面为玩家宣传站，游戏服务由网易官方提供 | 网站创始人：不方便透露"
-    ]
+    ],
+
+    /* =========================================================
+       🎛️ 动态效果参数（所有可调数值）
+       ========================================================= */
+
+    // ---- 打字机效果 ----
+    typewriterSpeed: 300,           // 每字间隔（毫秒），越小越快
+    typewriterDelay: 300,           // 页面加载后延迟启动（毫秒）
+
+    // ---- 数字滚动 ----
+    numberDuration: 3000,           // 数字滚动动画总时长（毫秒）
+    numberThreshold: 0.3,           // 触发数字滚动的可见比例（0~1）
+
+    // ---- 滚动升起/降下动画 ----
+    scrollTranslate: 80,            // 位移距离（px），越大升降越明显
+    scrollScale: 0.95,              // 初始缩放（0.9~1），越小“弹出感”越强
+    scrollDuration: 0.9,            // 过渡时长（秒），越大越慢
+
+    // ---- 卡片悬停/触摸抬起 ----
+    cardHoverOffset: -6,            // 抬起位移（px），负值表示向上
+
+    // ---- 滚动进度条 ----
+    progressHeight: 3,              // 进度条厚度（px）
+    progressColor: "linear-gradient(135deg, #4080FF 0%, #165DFF 100%)",
+
+    // ---- 视口触发阈值 ----
+    observerThreshold: 0.1,         // 卡片升起/降下的触发阈值（0~1）
+    staggerDelay: 0.08,             // 卡片入场交错延迟（秒），0 表示同时
 };
 /* =========================================================
    🎯 配置区域结束
@@ -1094,8 +1201,32 @@ const CONFIG = {
 
 
 window.onload = function() {
+    // ---- 将 CONFIG 中的样式参数注入到 CSS 变量 ----
+    const root = document.documentElement.style;
+    root.setProperty('--scroll-translate', CONFIG.scrollTranslate + 'px');
+    root.setProperty('--scroll-scale', CONFIG.scrollScale);
+    root.setProperty('--scroll-duration', CONFIG.scrollDuration + 's');
+    root.setProperty('--card-hover-offset', CONFIG.cardHoverOffset + 'px');
+    root.setProperty('--progress-height', CONFIG.progressHeight + 'px');
+    root.setProperty('--progress-color', CONFIG.progressColor);
+
+    // ---- 打字机效果 ----
+    const titleEl = document.getElementById('typewriter-title');
+    const fullText = CONFIG.serverName;
+    let charIndex = 0;
+    function typeWriter() {
+        if (charIndex < fullText.length) {
+            titleEl.textContent = fullText.substring(0, charIndex + 1);
+            charIndex++;
+            setTimeout(typeWriter, CONFIG.typewriterSpeed);
+        } else {
+            titleEl.classList.add('typewriter-cursor');
+        }
+    }
+    setTimeout(typeWriter, CONFIG.typewriterDelay);
+
+    // ---- 其他初始化 ----
     document.getElementById("nav-logo").innerText = CONFIG.serverName;
-    document.getElementById("server-name").innerText = CONFIG.serverName;
     document.getElementById("server-slogan").innerText = CONFIG.serverSlogan;
     document.getElementById("sid-text").innerText = CONFIG.serverId;
     document.getElementById("spwd-text").innerText = CONFIG.serverPassword;
@@ -1116,18 +1247,48 @@ window.onload = function() {
     updateRuntime();
     setInterval(updateRuntime, 1000);
 
+    // ---- 数字滚动 ----
     const statsBox = document.getElementById("stats-grid");
-    CONFIG.stats.forEach(item => {
+    const statItems = [];
+    CONFIG.stats.forEach((item, index) => {
         const div = document.createElement("div");
-        div.className = "stat-box";
-        div.innerHTML = `<h3>${item.number}</h3><p>${item.label}</p>`;
+        div.className = "stat-box animate-on-scroll";
+        div.innerHTML = `<h3 data-target="${item.number}" data-suffix="${item.suffix || ''}">0</h3><p>${item.label}</p>`;
         statsBox.appendChild(div);
+        statItems.push({
+            el: div.querySelector('h3'),
+            target: parseFloat(item.number),
+            suffix: item.suffix || '',
+            animated: false
+        });
     });
 
+    const numberObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const h3 = entry.target;
+                const parent = h3.closest('.stat-box');
+                if (!parent) return;
+                const index = Array.from(statsBox.children).indexOf(parent);
+                if (index === -1) return;
+                const item = statItems[index];
+                if (!item || item.animated) return;
+                item.animated = true;
+                animateNumber(h3, item.target, item.suffix, CONFIG.numberDuration);
+            }
+        });
+    }, { threshold: CONFIG.numberThreshold });
+
+    statItems.forEach(item => {
+        numberObserver.observe(item.el);
+    });
+
+    // ---- 玩法卡片 ----
     const gameplayBox = document.getElementById("gameplay-grid");
-    CONFIG.gameplay.forEach(item => {
+    CONFIG.gameplay.forEach((item, index) => {
         const div = document.createElement("div");
-        div.className = "gameplay-card";
+        div.className = "gameplay-card animate-on-scroll";
+        div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
         div.innerHTML = `
             <div class="gameplay-icon">${item.icon}</div>
             <div class="gameplay-content">
@@ -1138,6 +1299,7 @@ window.onload = function() {
         gameplayBox.appendChild(div);
     });
 
+    // ---- 完整玩法 ----
     const fullGameplayBox = document.getElementById("full-gameplay-content");
     CONFIG.fullGameplay.forEach(item => {
         const div = document.createElement("div");
@@ -1153,22 +1315,27 @@ window.onload = function() {
         fullGameplayBox.appendChild(div);
     });
 
+    // ---- 下载链接 ----
     document.querySelectorAll('.download-btn')[0].href = CONFIG.guide.pcDownloadUrl;
     document.querySelectorAll('.download-btn')[1].href = CONFIG.guide.mobileDownloadUrl;
     document.querySelector('.guide-tip').innerHTML = `官方网址：${CONFIG.guide.officialDomain}<br>请勿下载第三方渠道安装包，避免账号安全风险与广告捆绑`;
 
+    // ---- 特色功能 ----
     const featureBox = document.getElementById("feature-grid");
-    CONFIG.features.forEach(item => {
+    CONFIG.features.forEach((item, index) => {
         const div = document.createElement("div");
-        div.className = "feature-box";
+        div.className = "feature-box animate-on-scroll";
+        div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
         div.innerHTML = `<h3>${item.icon} ${item.title}</h3><p>${item.desc}</p>`;
         featureBox.appendChild(div);
     });
 
+    // ---- 团队 ----
     renderTeamList('owner-list', CONFIG.team.owner, 'owner');
     renderTeamList('admin-list', CONFIG.team.admins, 'admin');
     renderTeamList('contrib-list', CONFIG.team.contributors, 'contrib');
 
+    // ---- 页脚 ----
     const footerBox = document.getElementById("footer-content");
     CONFIG.footer.forEach(line => {
         const p = document.createElement("p");
@@ -1177,8 +1344,39 @@ window.onload = function() {
     });
 
     bindCopyButtons();
+    initScrollAnimation();
+    window.addEventListener('scroll', updateProgressBar);
+    updateProgressBar();
 };
 
+// ===== 数字滚动动画 =====
+function animateNumber(el, target, suffix, duration) {
+    const startTime = performance.now();
+    const startValue = 0;
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(startValue + (target - startValue) * ease);
+        el.textContent = current + suffix;
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            el.textContent = target + suffix;
+        }
+    }
+    requestAnimationFrame(update);
+}
+
+// ===== 滚动进度条 =====
+function updateProgressBar() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress-bar').style.width = progress + '%';
+}
+
+// ===== 团队渲染 =====
 function renderTeamList(containerId, list, tagType) {
     const container = document.getElementById(containerId);
     const tagTextMap = {
@@ -1186,9 +1384,10 @@ function renderTeamList(containerId, list, tagType) {
         admin: '管理员',
         contrib: '贡献者'
     };
-    list.forEach(member => {
+    list.forEach((member, index) => {
         const div = document.createElement("div");
-        div.className = "member-card";
+        div.className = "member-card animate-on-scroll";
+        div.style.transitionDelay = (index * CONFIG.staggerDelay) + 's';
         div.innerHTML = `
             <div class="member-top">
                 <span class="member-name">${member.name}</span>
@@ -1200,6 +1399,7 @@ function renderTeamList(containerId, list, tagType) {
     });
 }
 
+// ===== 复制功能 =====
 function copyText(text) {
     return new Promise((resolve) => {
         if (navigator.clipboard && window.isSecureContext) {
@@ -1248,32 +1448,49 @@ function bindCopyButtons() {
     });
 }
 
+// ===== 运行时间 =====
 function updateRuntime() {
     const now = Date.now();
     const diff = now - CONFIG.serverStartTime;
-    
     const totalSeconds = Math.floor(diff / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
-    
     const formatNum = (num) => num.toString().padStart(2, '0');
     document.getElementById("runtime-display").innerText = `${hours}:${formatNum(minutes)}:${formatNum(seconds)}`;
 }
 
+// ===== 模态框 =====
 function openGameplayModal() {
     document.getElementById("gameplay-modal").style.display = "flex";
 }
 function closeGameplayModal() {
     document.getElementById("gameplay-modal").style.display = "none";
 }
-
 document.getElementById("gameplay-modal").addEventListener("click", function(e) {
     if (e.target === this) {
         closeGameplayModal();
     }
 });
-</script>
 
+// ===== 滚动动画（升起/降下 + 交错延迟） =====
+function initScrollAnimation() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: CONFIG.observerThreshold,
+        rootMargin: '0px'
+    });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+}
+</script>
 </body>
-    </html>
+</html>
